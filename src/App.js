@@ -1,12 +1,13 @@
 import React from "react";
 
 import Layout from "./components/Layout/Layout";
+import PizzaBuilder from "./containers/PizzaBuilder/PizzaBuilder";
 
 function App() {
   return (
     <div>
       <Layout>
-        <p>Test</p>
+        <PizzaBuilder />
       </Layout>
     </div>
   );
