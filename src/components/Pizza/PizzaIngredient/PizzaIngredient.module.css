@@ -3,8 +3,118 @@
     width: 100%;
     background: url("../../../assets/PizzBuilder/base.png");
     background-size: cover;
-    margin: 2% auto;
+    margin: auto;
     position: absolute;
     top: 0;
     left: 0;
+}
+
+.Pepperoni {
+    position: absolute;
+    top: -1%;
+    left: 1%;
+    height: 100%;
+    width: 100%;
+    background: url("../../../assets/PizzBuilder/pepperoni.png");
+    background-size: cover;
+}
+
+.Sausage {
+    position: absolute;
+    top: -1%;
+    left: 1%;
+    height: 100%;
+    width: 100%;
+    background: url("../../../assets/PizzBuilder/sausage.png");
+    background-size: cover;
+}
+
+.Bacon {
+    position: absolute;
+    top: -1%;
+    left: 1%;
+    height: 100%;
+    width: 100%;
+    background: url("../../../assets/PizzBuilder/bacon.png");
+    background-size: cover;
+}
+
+.Chicken {
+    position: absolute;
+    top: -1%;
+    left: 1%;
+    height: 100%;
+    width: 100%;
+    background: url("../../../assets/PizzBuilder/chicken.png");
+    background-size: cover;
+}
+
+.Ham {
+    position: absolute;
+    top: -1%;
+    left: 1%;
+    height: 100%;
+    width: 100%;
+    background: url("../../../assets/PizzBuilder/ham.png");
+    background-size: cover;
+}
+
+.Beef {
+    position: absolute;
+    top: -1%;
+    left: 1%;
+    height: 100%;
+    width: 100%;
+    background: url("../../../assets/PizzBuilder/beef.png");
+    background-size: cover;
+}
+
+.Peppers {
+    position: absolute;
+    top: -1%;
+    left: 1%;
+    height: 100%;
+    width: 100%;
+    background: url("../../../assets/PizzBuilder/peppers.png");
+    background-size: cover;
+}
+
+.Mushrooms {
+    position: absolute;
+    top: -1%;
+    left: 1%;
+    height: 100%;
+    width: 100%;
+    background: url("../../../assets/PizzBuilder/mushrooms.png");
+    background-size: cover;
+}
+
+.Olives {
+    position: absolute;
+    top: -1%;
+    left: 1%;
+    height: 100%;
+    width: 100%;
+    background: url("../../../assets/PizzBuilder/olives.png");
+    background-size: cover;
+}
+
+.Tomatoes {
+    position: absolute;
+    top: -1%;
+    left: 1%;
+    height: 100%;
+    width: 100%;
+    background: url("../../../assets/PizzBuilder/tomatoes.png");
+    background-size: cover;
+}
+
+.Pineapple {
+    position: absolute;
+    top: -1%;
+    left: 1%;
+    height: 100%;
+    width: 100%;
+    background: url("../../../assets/PizzBuilder/pineapple.png");
+    background-size: cover;
 }

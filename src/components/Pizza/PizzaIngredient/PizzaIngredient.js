@@ -11,12 +11,6 @@ class PizzaIngredient extends Component {
       case "crust":
         ingredient = <div className={styles.Crust}></div>;
         break;
-      case "cheese":
-        ingredient = <div className={styles.Cheese}></div>;
-        break;
-      case "sauce":
-        ingredient = <div className={styles.Sauce}></div>;
-        break;
       case "pepperoni":
         ingredient = <div className={styles.Pepperoni}></div>;
         break;
@@ -47,11 +41,8 @@ class PizzaIngredient extends Component {
       case "onions":
         ingredient = <div className={styles.Onions}></div>;
         break;
-      case "tomatos":
-        ingredient = <div className={styles.Tomatos}></div>;
-        break;
-      case "garlic":
-        ingredient = <div className={styles.Garlic}></div>;
+      case "tomatoes":
+        ingredient = <div className={styles.Tomatoes}></div>;
         break;
       case "pineapple":
         ingredient = <div className={styles.Pineapple}></div>;
