@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import Aux from "../../hoc/AuxComponent";
 import Pizza from "../../components/Pizza/Pizza";
+import BuildControls from "../../components/Pizza/BuildControls/BuildControls";
 
 export default class PizzaBuilder extends Component {
   state = {
@@ -9,15 +10,15 @@ export default class PizzaBuilder extends Component {
       pepperoni: false,
       bacon: false,
       sausage: false,
-      ham: true,
+      ham: false,
       chicken: false,
       beef: false,
       peppers: false,
       mushrooms: false,
       olives: false,
-      onions: true,
+      onions: false,
       tomatoes: false,
-      pineapple: true
+      pineapple: false
     }
   };
 
@@ -25,7 +26,7 @@ export default class PizzaBuilder extends Component {
     return (
       <Aux>
         <Pizza ingredients={this.state.ingredients} />
-        <div>Pizza Controls</div>
+        <BuildControls />
       </Aux>
     );
   }
