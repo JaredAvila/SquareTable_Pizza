@@ -8,6 +8,12 @@ class PizzaIngredient extends Component {
     let ingredient = null;
 
     switch (this.props.type) {
+      case "crust":
+        ingredient = <div className={styles.Crust}></div>;
+        break;
+      case "cheese":
+        ingredient = <div className={styles.Cheese}></div>;
+        break;
       case "sauce":
         ingredient = <div className={styles.Sauce}></div>;
         break;
@@ -58,7 +64,7 @@ class PizzaIngredient extends Component {
 }
 
 PizzaIngredient.propTypes = {
-    type: PropTypes.string.isRequired
-}
+  type: PropTypes.string.isRequired
+};
 
 export default PizzaIngredient;

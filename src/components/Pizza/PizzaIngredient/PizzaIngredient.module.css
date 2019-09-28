@@ -1,0 +1,10 @@
+.Crust {
+    height: 100%;
+    width: 100%;
+    background: url("../../../assets/PizzBuilder/base.png");
+    background-size: cover;
+    margin: 2% auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

@@ -1,0 +1,23 @@
+.Pizza {
+    width: 100%;
+    margin: auto;
+    height: 500px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.8rem;
+    position: relative;
+}
+
+@media (min-width: 500px) {
+    .Pizza {
+        width: 500px;
+        height: 500px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .Pizza {
+        width: 700px;
+        height: 700px;
+    }
+}
