@@ -6,18 +6,18 @@ import Pizza from "../../components/Pizza/Pizza";
 export default class PizzaBuilder extends Component {
   state = {
     ingredients: {
-      pepperoni: true,
-      bacon: true,
+      pepperoni: false,
+      bacon: false,
       sausage: false,
-      ham: false,
-      chicken: true,
+      ham: true,
+      chicken: false,
       beef: false,
-      peppers: true,
+      peppers: false,
       mushrooms: false,
       olives: false,
       onions: true,
       tomatoes: false,
-      pinapple: false
+      pineapple: true
     }
   };
 

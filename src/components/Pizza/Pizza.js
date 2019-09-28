@@ -10,14 +10,12 @@ const Pizza = props => {
     return p;
   }, {});
   const toppings = Object.keys(filteredObj).map(topping => {
-    console.log(topping);
+    return <PizzaIngredient key={topping} type={topping} />;
   });
   return (
     <div className={styles.Pizza}>
       <PizzaIngredient type="crust" />
-      <PizzaIngredient type="pepperoni" />
-      <PizzaIngredient type="bacon" />
-      <PizzaIngredient type="peppers" />
+      {toppings}
     </div>
   );
 };

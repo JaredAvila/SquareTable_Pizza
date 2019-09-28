@@ -89,6 +89,16 @@
     background-size: cover;
 }
 
+.Onions {
+    position: absolute;
+    top: -1%;
+    left: 1%;
+    height: 100%;
+    width: 100%;
+    background: url("../../../assets/PizzBuilder/onions.png");
+    background-size: cover;
+}
+
 .Olives {
     position: absolute;
     top: -1%;
