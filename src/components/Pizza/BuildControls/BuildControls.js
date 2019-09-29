@@ -19,14 +19,32 @@ const controls = [
   { label: "Pineapple", type: "pineapple" }
 ];
 
+const sizeControls = [
+  { label: "Small", type: "small" },
+  { label: "Medium", type: "medium" },
+  { label: "Large", type: "large" },
+  { label: "X-Large", type: "xLarge" }
+];
+
 const BuildControls = props => {
   return (
     <div className={styles.BuildControls}>
+      {sizeControls.map(control => (
+        <BuildControl
+          key={control.label}
+          label={control.label}
+          size={props.size[control.type]}
+          sizeHandler={() => props.sizeChanged(control.type)}
+          btnType="size"
+        />
+      ))}
       {controls.map(control => (
         <BuildControl
           added={() => props.ingredientAdded(control.type)}
           key={control.label}
           label={control.label}
+          disabled={props.disabled[control.type]}
+          btnType="ingredient"
         />
       ))}
     </div>
