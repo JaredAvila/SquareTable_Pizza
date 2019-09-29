@@ -29,24 +29,30 @@ const sizeControls = [
 const BuildControls = props => {
   return (
     <div className={styles.BuildControls}>
-      {sizeControls.map(control => (
-        <BuildControl
-          key={control.label}
-          label={control.label}
-          size={props.size[control.type]}
-          sizeHandler={() => props.sizeChanged(control.type)}
-          btnType="size"
-        />
-      ))}
-      {controls.map(control => (
-        <BuildControl
-          added={() => props.ingredientAdded(control.type)}
-          key={control.label}
-          label={control.label}
-          disabled={props.disabled[control.type]}
-          btnType="ingredient"
-        />
-      ))}
+      <h4>Please select a size</h4>
+      <div className={styles.sizeControl}>
+        {sizeControls.map(control => (
+          <BuildControl
+            key={control.label}
+            label={control.label}
+            size={props.size[control.type]}
+            sizeHandler={() => props.sizeChanged(control.type)}
+            btnType="size"
+          />
+        ))}
+      </div>
+      <h4>Choose your toppings</h4>
+      <div className={styles.toppingControl}>
+        {controls.map(control => (
+          <BuildControl
+            added={() => props.ingredientAdded(control.type)}
+            key={control.label}
+            label={control.label}
+            disabled={props.disabled[control.type]}
+            btnType="ingredient"
+          />
+        ))}
+      </div>
     </div>
   );
 };

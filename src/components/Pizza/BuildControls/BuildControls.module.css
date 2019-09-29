@@ -8,3 +8,18 @@
     margin: auto;
     padding: 10px 0;
 }
+
+.sizeControl {
+    display: flex;
+}
+
+.toppingControl {
+    display: flex;
+    width: 600px;
+    flex-wrap: wrap;
+}
+
+.BuildControls h4 {
+    margin: 25px 0;
+    font-size: 2rem;
+}

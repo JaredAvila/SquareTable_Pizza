@@ -1,6 +1,8 @@
 import React from "react";
 // import PropTypes from "prop-types";
 
+import Aux from "../../../../hoc/AuxComponent";
+
 import * as styles from "./BuildControl.module.css";
 
 const BuildControl = props => {
@@ -9,36 +11,47 @@ const BuildControl = props => {
   if (props.btnType === "size") {
     if (!props.size) {
       sizeBtn = (
-        <button className={styles.Add} onClick={props.sizeHandler}>
-          Add
-        </button>
+        <Aux>
+          <div className={styles.SizeLabel}>{props.label}</div>
+          <button className={styles.Size} onClick={props.sizeHandler}>
+            <div className={styles.NotSelected}></div>
+          </button>
+        </Aux>
       );
     } else {
       sizeBtn = (
-        <button className={styles.Remove} onClick={props.sizeHandler}>
-          Remove
-        </button>
+        <Aux>
+          <div className={styles.SizeLabel}>{props.label}</div>
+          <button className={styles.Size} onClick={props.sizeHandler}>
+            <div className={styles.Selected}></div>
+          </button>
+        </Aux>
       );
     }
   } else {
     if (props.disabled) {
       ingBtn = (
-        <button className={styles.Remove} onClick={props.added}>
-          Remove
-        </button>
+        <Aux>
+          <div className={styles.Label}>{props.label}</div>
+          <button className={styles.Remove} onClick={props.added}>
+            Remove
+          </button>
+        </Aux>
       );
     } else if (!props.disabled) {
       ingBtn = (
-        <button className={styles.Add} onClick={props.added}>
-          Add
-        </button>
+        <Aux>
+          <div className={styles.Label}>{props.label}</div>
+          <button className={styles.Add} onClick={props.added}>
+            Add
+          </button>
+        </Aux>
       );
     }
   }
 
   return (
     <div className={styles.BuildControl}>
-      <div className={styles.Label}>{props.label}</div>
       {sizeBtn}
       {ingBtn}
     </div>

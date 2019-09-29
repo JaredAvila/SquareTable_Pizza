@@ -9,44 +9,68 @@
     display: block;
     font: inherit;
     padding: 5px;
-    margin: 0 5px;
+    margin: 0 45px 0 0;
     width: 80px;
-    border: 1px solid #AA6817;
     cursor: pointer;
     outline: none;
 }
 
-.BuildControl button:disabled {
-    background-color: #AC9980;
-    border: 1px solid #7E7365;
-    color: #ccc;
+.BuildControl button.Size {
+    background-color: rgb(212, 212, 212);
+    box-shadow: inset 0 0 3px rgb(148, 148, 148);
+    width: fit-content;
+    padding: 6px;
+    border-radius: 50%;
+    border: none;
     cursor: default;
 }
 
-.BuildControl button:hover:disabled {
-    background-color: #AC9980;
-    color: #ccc;
+.Selected, .NotSelected {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+}
+
+.Selected {
+    background-color: aqua;
+    border: 1px solid rgb(0, 179, 134);
     cursor: not-allowed;
 }
 
+.NotSelected {
+    background-color: rgb(122, 122, 122);
+    border: 1px solid rgb(75, 75, 75);
+    cursor: pointer;
+}
+
+.NotSelected:hover {
+    background-color: rgb(139, 139, 139);
+}
+
 .Label {
-    padding: 10px;
     font-weight: bold;
-    width: 80px;
+    width: 70px;
+}
+
+.SizeLabel {
+    font-weight: bold;
 }
 
 .BuildControl .Remove {
     background-color: #D39952;
+    border: 1px solid #AA6817;
     color: white;
 }
 
 .BuildControl .Add {
     background-color: #8F5E1E;
+    border: 1px solid #AA6817;
     color: white;
 }
 
 .BuildControl .Remove:hover, .BuildControl .Remove:active {
     background-color: #DAA972;
+    border: 1px solid #AA6817;
     color: white;
 }
 
