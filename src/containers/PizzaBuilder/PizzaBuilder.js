@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import Aux from "../../hoc/AuxComponent";
 import Pizza from "../../components/Pizza/Pizza";
 import BuildControls from "../../components/Pizza/BuildControls/BuildControls";
+import Modal from "../../components/UI/Modal/Modal";
+import OrderSummary from "../../components/Pizza/OrderSummary/OrderSummary";
 
 const PRICES = {
   small: 7.99,
@@ -83,8 +85,17 @@ export default class PizzaBuilder extends Component {
   };
 
   render() {
+    const filteredObj = Object.keys(this.state.ingredients).reduce((p, c) => {
+      if (this.state.ingredients[c]) p[c] = this.state.ingredients[c];
+      return p;
+    }, {});
+    const toppings = Object.keys(filteredObj).map(topping => topping);
+    console.log(toppings);
     return (
       <Aux>
+        <Modal>
+          <OrderSummary toppings={toppings} size={this.state.totalPrice} />
+        </Modal>
         <Pizza ingredients={this.state.ingredients} />
         <BuildControls
           ingredientAdded={this.addIngredientHandler}
