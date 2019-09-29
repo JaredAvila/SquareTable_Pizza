@@ -34,7 +34,7 @@
 .Selected {
     background-color: aqua;
     border: 1px solid rgb(0, 179, 134);
-    cursor: not-allowed;
+    cursor: default;
 }
 
 .NotSelected {

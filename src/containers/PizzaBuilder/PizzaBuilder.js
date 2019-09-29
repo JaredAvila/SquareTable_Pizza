@@ -85,13 +85,13 @@ export default class PizzaBuilder extends Component {
   render() {
     return (
       <Aux>
-        <p>{this.state.totalPrice}</p>
         <Pizza ingredients={this.state.ingredients} />
         <BuildControls
           ingredientAdded={this.addIngredientHandler}
           sizeChanged={this.sizeSelectHandler}
           disabled={this.state.ingredients}
           size={this.state.size}
+          price={this.state.totalPrice}
         />
       </Aux>
     );

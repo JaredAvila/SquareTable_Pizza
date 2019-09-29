@@ -29,6 +29,9 @@ const sizeControls = [
 const BuildControls = props => {
   return (
     <div className={styles.BuildControls}>
+      <p className={styles.Total}>
+        Current total:<strong> ${props.price}</strong>
+      </p>
       <h4>Please select a size</h4>
       <div className={styles.sizeControl}>
         {sizeControls.map(control => (
@@ -53,6 +56,7 @@ const BuildControls = props => {
           />
         ))}
       </div>
+      <button className={styles.OrderButton}>ADD TO CART</button>
     </div>
   );
 };
