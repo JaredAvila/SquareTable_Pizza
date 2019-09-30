@@ -15,11 +15,14 @@
 
 .sizeControl {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .toppingControl {
     display: flex;
     width: 600px;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -56,5 +59,11 @@
     }
     100% {
         transform: scale(1);
+    }
+}
+
+@media(max-width: 600px) {
+    .toppingControl {
+        width: 100%;
     }
 }

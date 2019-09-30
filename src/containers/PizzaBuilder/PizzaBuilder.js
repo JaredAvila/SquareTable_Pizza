@@ -110,7 +110,6 @@ export default class PizzaBuilder extends Component {
       return p;
     }, {});
     const toppings = Object.keys(filteredObj).map(topping => topping);
-    console.log(toppings);
     return (
       <Aux>
         <Modal
