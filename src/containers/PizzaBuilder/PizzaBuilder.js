@@ -99,6 +99,11 @@ export default class PizzaBuilder extends Component {
     this.setState({ purchasing: false });
   };
 
+  purchaseContinueHandler = () => {
+    // this.setState({ purchasing: false });
+    alert("you continue");
+  };
+
   render() {
     const filteredObj = Object.keys(this.state.ingredients).reduce((p, c) => {
       if (this.state.ingredients[c]) p[c] = this.state.ingredients[c];
@@ -116,6 +121,8 @@ export default class PizzaBuilder extends Component {
             toppings={toppings}
             price={this.state.totalPrice}
             size={this.state.currentSize}
+            purchaseCancelled={this.purchaseCancelHandler}
+            purchaseContinued={this.purchaseContinueHandler}
           />
         </Modal>
         <Pizza ingredients={this.state.ingredients} />

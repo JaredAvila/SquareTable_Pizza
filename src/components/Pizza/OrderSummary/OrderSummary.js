@@ -2,6 +2,7 @@ import React from "react";
 
 import * as styles from "./OrderSummary.module.css";
 import Aux from "../../../hoc/AuxComponent";
+import Button from "../../UI/Button/Button";
 
 const OrderSummary = props => {
   let markUp;
@@ -24,8 +25,14 @@ const OrderSummary = props => {
       {markUp}
       <ul className={styles.List}>{toppingSummary}</ul>
       <p className={styles.Checkout}>
-        Your total: ${props.price}. Continue to chekcout?
+        Your total is: <strong>${props.price}</strong>. Continue to chekcout?
       </p>
+      <Button buttonType="Danger" clicked={props.purchaseCancelled}>
+        CANCEL
+      </Button>
+      <Button buttonType="Success" clicked={props.purchaseContinued}>
+        CONTINUE
+      </Button>
     </Aux>
   );
 };
