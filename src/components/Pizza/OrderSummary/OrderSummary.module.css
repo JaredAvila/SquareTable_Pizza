@@ -1,0 +1,23 @@
+.OrderSummary {
+    font-size: 1.8rem;
+    border-bottom: 4px double rgb(37, 37, 37);
+    margin-bottom: 10px;
+}
+
+.List {
+    list-style-type: none;
+}
+
+.Item {
+    margin-left: 10px;
+}
+
+.Type {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+.Checkout {
+    margin-top: 10px;
+    font-size: 1.4rem;
+}

@@ -23,7 +23,7 @@ const sizeControls = [
   { label: "Small", type: "small" },
   { label: "Medium", type: "medium" },
   { label: "Large", type: "large" },
-  { label: "X-Large", type: "xLarge" }
+  { label: "X-Large", type: "ExtraLarge" }
 ];
 
 const BuildControls = props => {
@@ -56,7 +56,7 @@ const BuildControls = props => {
           />
         ))}
       </div>
-      <button className={styles.OrderButton}>ADD TO CART</button>
+      <button className={styles.OrderButton} onClick={props.purchase}>ADD TO CART</button>
     </div>
   );
 };

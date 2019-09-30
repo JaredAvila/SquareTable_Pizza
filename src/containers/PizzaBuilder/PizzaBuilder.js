@@ -10,7 +10,7 @@ const PRICES = {
   small: 7.99,
   medium: 9.99,
   large: 11.99,
-  xLarge: 13.99,
+  ExtraLarge: 13.99,
   pepperoni: 0.75,
   bacon: 1.0,
   sausage: 0.75,
@@ -45,9 +45,11 @@ export default class PizzaBuilder extends Component {
       small: false,
       medium: true,
       large: false,
-      xLarge: false
+      ExtraLarge: false
     },
-    totalPrice: 9.99
+    totalPrice: 9.99,
+    currentSize: "medium",
+    purchasing: false
   };
 
   addIngredientHandler = type => {
@@ -81,7 +83,16 @@ export default class PizzaBuilder extends Component {
     updatedSize[size] = !this.state.size[size];
     newPrice = newPrice + PRICES[size];
     newPrice = parseFloat(newPrice.toFixed(2));
-    this.setState({ size: updatedSize, totalPrice: newPrice });
+    const newSize = size;
+    this.setState({
+      size: updatedSize,
+      totalPrice: newPrice,
+      currentSize: newSize
+    });
+  };
+
+  purchaseHandler = () => {
+    this.setState({ purchasing: true });
   };
 
   render() {
@@ -93,8 +104,12 @@ export default class PizzaBuilder extends Component {
     console.log(toppings);
     return (
       <Aux>
-        <Modal>
-          <OrderSummary toppings={toppings} size={this.state.totalPrice} />
+        <Modal show={this.state.purchasing}>
+          <OrderSummary
+            toppings={toppings}
+            price={this.state.totalPrice}
+            size={this.state.currentSize}
+          />
         </Modal>
         <Pizza ingredients={this.state.ingredients} />
         <BuildControls
@@ -103,6 +118,7 @@ export default class PizzaBuilder extends Component {
           disabled={this.state.ingredients}
           size={this.state.size}
           price={this.state.totalPrice}
+          purchase={this.purchaseHandler}
         />
       </Aux>
     );
