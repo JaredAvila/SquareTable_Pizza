@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import * as styles from "./OrderSummary.module.css";
 import Aux from "../../../hoc/AuxComponent/AuxComponent";
@@ -35,6 +36,14 @@ const OrderSummary = props => {
       </Button>
     </Aux>
   );
+};
+
+OrderSummary.propTypes = {
+  toppings: PropTypes.array.isRequired,
+  size: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  purchaseCancelled: PropTypes.func.isRequired,
+  purchaseContinued: PropTypes.func.isRequired
 };
 
 export default OrderSummary;

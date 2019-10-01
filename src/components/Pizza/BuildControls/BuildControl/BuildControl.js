@@ -59,9 +59,9 @@ const BuildControl = props => {
 };
 
 BuildControl.propTypes = {
-  btnType: PropTypes.string,
+  btnType: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
-  label: PropTypes.string,
+  label: PropTypes.string.isRequired,
   sizeHandler: PropTypes.func,
   added: PropTypes.func,
   size: PropTypes.bool

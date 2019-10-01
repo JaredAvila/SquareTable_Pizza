@@ -65,11 +65,11 @@ const BuildControls = props => {
 };
 
 BuildControls.propTypes = {
-  price: PropTypes.number,
-  sizeChanged: PropTypes.func,
-  ingredientAdded: PropTypes.func,
-  disabled: PropTypes.object,
-  purchase: PropTypes.func
+  price: PropTypes.number.isRequired,
+  sizeChanged: PropTypes.func.isRequired,
+  ingredientAdded: PropTypes.func.isRequired,
+  disabled: PropTypes.object.isRequired,
+  purchase: PropTypes.func.isRequired
 };
 
 export default BuildControls;

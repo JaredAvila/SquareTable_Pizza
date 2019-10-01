@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import * as styles from "./Pizza.module.css";
 
@@ -18,6 +19,10 @@ const Pizza = props => {
       {toppings}
     </div>
   );
+};
+
+Pizza.propTypes = {
+  ingredients: PropTypes.object.isRequired
 };
 
 export default Pizza;
