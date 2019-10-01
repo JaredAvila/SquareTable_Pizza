@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import * as styles from "./Button.module.css";
 
@@ -11,6 +12,11 @@ const Button = props => {
       {props.children}
     </button>
   );
+};
+
+Button.propTypes = {
+  buttonType: PropTypes.string.isRequired,
+  clicked: PropTypes.func.isRequired
 };
 
 export default Button;

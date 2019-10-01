@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import * as styles from "./Toolbar.module.css";
 
@@ -18,6 +19,10 @@ const Toolbar = props => {
       </nav>
     </header>
   );
+};
+
+Toolbar.propTypes = {
+  toggle: PropTypes.func
 };
 
 export default Toolbar;

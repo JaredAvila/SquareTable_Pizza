@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import * as styles from "./Modal.module.css";
 
@@ -27,5 +28,10 @@ class Modal extends Component {
     );
   }
 }
+
+Modal.propTypes = {
+  show: PropTypes.bool,
+  modalClosed: PropTypes.func
+};
 
 export default Modal;
