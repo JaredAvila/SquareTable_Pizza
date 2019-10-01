@@ -1,7 +1,7 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
-import Aux from "../../../../hoc/AuxComponent";
+import Aux from "../../../../hoc/AuxComponent/AuxComponent";
 
 import * as styles from "./BuildControl.module.css";
 
@@ -58,6 +58,13 @@ const BuildControl = props => {
   );
 };
 
-BuildControl.propTypes = {};
+BuildControl.propTypes = {
+  btnType: PropTypes.string,
+  disabled: PropTypes.bool,
+  label: PropTypes.string,
+  sizeHandler: PropTypes.func,
+  added: PropTypes.func,
+  size: PropTypes.bool
+};
 
 export default BuildControl;

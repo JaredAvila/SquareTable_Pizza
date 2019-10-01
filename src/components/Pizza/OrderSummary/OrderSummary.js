@@ -1,7 +1,7 @@
 import React from "react";
 
 import * as styles from "./OrderSummary.module.css";
-import Aux from "../../../hoc/AuxComponent";
+import Aux from "../../../hoc/AuxComponent/AuxComponent";
 import Button from "../../UI/Button/Button";
 
 const OrderSummary = props => {
