@@ -12,24 +12,7 @@ import OrderSummary from "../../components/Pizza/OrderSummary/OrderSummary";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHanlder";
 
-const PRICES = {
-  small: 7.99,
-  medium: 9.99,
-  large: 11.99,
-  ExtraLarge: 13.99,
-  pepperoni: 0.75,
-  bacon: 1.0,
-  sausage: 0.75,
-  ham: 0.75,
-  chicken: 1.0,
-  beef: 0.75,
-  peppers: 0.5,
-  mushrooms: 0.5,
-  olives: 0.5,
-  onions: 0.5,
-  tomatoes: 1.0,
-  pineapple: 1
-};
+let PRICES = {};
 
 class PizzaBuilder extends Component {
   state = {
@@ -43,18 +26,27 @@ class PizzaBuilder extends Component {
     totalPrice: 9.99,
     currentSize: "medium",
     purchasing: false,
-    loading: false
+    loading: false,
+    error: false
   };
 
   componentDidMount() {
     axios
       .get("https://squaretable-1984f.firebaseio.com/toppings.json")
       .then(res => {
-        console.log(res.data);
         this.setState({ ingredients: res.data });
       })
       .catch(err => {
-        console.log(err);
+        this.setState({ error: true });
+      });
+
+    axios
+      .get("https://squaretable-1984f.firebaseio.com/prices.json")
+      .then(res => {
+        PRICES = res.data;
+      })
+      .catch(err => {
+        this.setState({ error: true });
       });
   }
 
@@ -136,7 +128,11 @@ class PizzaBuilder extends Component {
   };
 
   render() {
-    let pizza = <Spinner />;
+    let pizza = this.state.error ? (
+      <p>Something went wrong. =(</p>
+    ) : (
+      <Spinner />
+    );
     let orderSummary = null;
     if (this.state.ingredients) {
       const filteredObj = filterObject(this.state.ingredients);
