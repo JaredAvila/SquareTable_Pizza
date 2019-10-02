@@ -1,15 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import filterObject from "../../helper/filterObject";
 
 import * as styles from "./Pizza.module.css";
 
 import PizzaIngredient from "./PizzaIngredient/PizzaIngredient";
 
 const Pizza = props => {
-  const filteredObj = Object.keys(props.ingredients).reduce((p, c) => {
-    if (props.ingredients[c]) p[c] = props.ingredients[c];
-    return p;
-  }, {});
+  const filteredObj = filterObject(props.ingredients);
   const toppings = Object.keys(filteredObj).map(topping => {
     return <PizzaIngredient key={topping} type={topping} />;
   });

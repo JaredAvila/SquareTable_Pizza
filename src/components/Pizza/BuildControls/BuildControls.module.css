@@ -1,5 +1,5 @@
 .BuildControls {
-    width: 100%;
+    width: 50%;
     background-color: aquamarine;
     display: flex;
     flex-flow: column;
@@ -21,7 +21,7 @@
 
 .toppingControl {
     display: flex;
-    width: 600px;
+    width: 100%;
     justify-content: center;
     flex-wrap: wrap;
 }
@@ -62,8 +62,8 @@
     }
 }
 
-@media(max-width: 600px) {
-    .toppingControl {
+@media(max-width: 942px) {
+    .BuildControls {
         width: 100%;
     }
 }

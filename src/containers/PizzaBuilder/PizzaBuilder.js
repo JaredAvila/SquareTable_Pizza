@@ -1,10 +1,15 @@
 import React, { Component } from "react";
+import axios from "../../axios-orders";
+import filterObject from "../../helper/filterObject";
+
+import * as styles from "./PizzaBuilder.module.css";
 
 import Aux from "../../hoc/AuxComponent/AuxComponent";
 import Pizza from "../../components/Pizza/Pizza";
 import BuildControls from "../../components/Pizza/BuildControls/BuildControls";
 import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/Pizza/OrderSummary/OrderSummary";
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 const PRICES = {
   small: 7.99,
@@ -100,39 +105,65 @@ export default class PizzaBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
-    // this.setState({ purchasing: false });
-    alert("you continue");
+    const filteredObj = filterObject(this.state.ingredients);
+    const data = {
+      customer: {
+        name: "Jared Avila",
+        address: "228 Florence St.",
+        city: "Sunnyvale",
+        state: "CA",
+        zip: "94086",
+        email: "jared@gmail.com"
+      },
+      pizzas: [
+        {
+          size: this.state.currentSize,
+          ingredients: Object.keys(filteredObj),
+          price: this.state.totalPrice
+        }
+      ]
+    };
+    // console.log(data);
+    axios
+      .post("/order.json", data)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
 
   render() {
-    const filteredObj = Object.keys(this.state.ingredients).reduce((p, c) => {
-      if (this.state.ingredients[c]) p[c] = this.state.ingredients[c];
-      return p;
-    }, {});
+    const filteredObj = filterObject(this.state.ingredients);
     const toppings = Object.keys(filteredObj).map(topping => topping);
+    let orderSummary = (
+      <OrderSummary
+        toppings={toppings}
+        price={this.state.totalPrice}
+        size={this.state.currentSize}
+        purchaseCancelled={this.purchaseCancelHandler}
+        purchaseContinued={this.purchaseContinueHandler}
+      />
+    );
+    if (this.state.loading) {
+      orderSummary = <Spinner />;
+    }
     return (
       <Aux>
         <Modal
           show={this.state.purchasing}
           modalClosed={this.purchaseCancelHandler}
         >
-          <OrderSummary
-            toppings={toppings}
-            price={this.state.totalPrice}
-            size={this.state.currentSize}
-            purchaseCancelled={this.purchaseCancelHandler}
-            purchaseContinued={this.purchaseContinueHandler}
-          />
+          {orderSummary}
         </Modal>
-        <Pizza ingredients={this.state.ingredients} />
-        <BuildControls
-          ingredientAdded={this.addIngredientHandler}
-          sizeChanged={this.sizeSelectHandler}
-          disabled={this.state.ingredients}
-          size={this.state.size}
-          price={this.state.totalPrice}
-          purchase={this.purchaseHandler}
-        />
+        <div className={styles.PizzaContainer}>
+          <Pizza ingredients={this.state.ingredients} />
+          <BuildControls
+            ingredientAdded={this.addIngredientHandler}
+            sizeChanged={this.sizeSelectHandler}
+            disabled={this.state.ingredients}
+            size={this.state.size}
+            price={this.state.totalPrice}
+            purchase={this.purchaseHandler}
+          />
+        </div>
       </Aux>
     );
   }

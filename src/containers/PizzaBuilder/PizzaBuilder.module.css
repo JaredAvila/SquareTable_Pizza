@@ -1,0 +1,9 @@
+.PizzaContainer {
+    display: flex;
+}
+
+@media(max-width: 942px) {
+    .PizzaContainer {
+        flex-wrap: wrap;
+    }
+}
