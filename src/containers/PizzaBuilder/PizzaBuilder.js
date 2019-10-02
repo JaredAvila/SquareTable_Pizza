@@ -33,20 +33,7 @@ const PRICES = {
 
 class PizzaBuilder extends Component {
   state = {
-    ingredients: {
-      pepperoni: false,
-      bacon: false,
-      sausage: false,
-      ham: false,
-      chicken: false,
-      beef: false,
-      peppers: false,
-      mushrooms: false,
-      olives: false,
-      onions: false,
-      tomatoes: false,
-      pineapple: false
-    },
+    ingredients: null,
     size: {
       small: false,
       medium: true,
@@ -58,6 +45,18 @@ class PizzaBuilder extends Component {
     purchasing: false,
     loading: false
   };
+
+  componentDidMount() {
+    axios
+      .get("https://squaretable-1984f.firebaseio.com/toppings.json")
+      .then(res => {
+        console.log(res.data);
+        this.setState({ ingredients: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   addIngredientHandler = type => {
     const updatedIngredients = {
@@ -137,28 +136,12 @@ class PizzaBuilder extends Component {
   };
 
   render() {
-    const filteredObj = filterObject(this.state.ingredients);
-    const toppings = Object.keys(filteredObj).map(topping => topping);
-    let orderSummary = (
-      <OrderSummary
-        toppings={toppings}
-        price={this.state.totalPrice}
-        size={this.state.currentSize}
-        purchaseCancelled={this.purchaseCancelHandler}
-        purchaseContinued={this.purchaseContinueHandler}
-      />
-    );
-    if (this.state.loading) {
-      orderSummary = <Spinner />;
-    }
-    return (
-      <Aux>
-        <Modal
-          show={this.state.purchasing}
-          modalClosed={this.purchaseCancelHandler}
-        >
-          {orderSummary}
-        </Modal>
+    let pizza = <Spinner />;
+    let orderSummary = null;
+    if (this.state.ingredients) {
+      const filteredObj = filterObject(this.state.ingredients);
+      const toppings = Object.keys(filteredObj).map(topping => topping);
+      pizza = (
         <div className={styles.PizzaContainer}>
           <Pizza ingredients={this.state.ingredients} />
           <BuildControls
@@ -170,6 +153,29 @@ class PizzaBuilder extends Component {
             purchase={this.purchaseHandler}
           />
         </div>
+      );
+      orderSummary = (
+        <OrderSummary
+          toppings={toppings}
+          price={this.state.totalPrice}
+          size={this.state.currentSize}
+          purchaseCancelled={this.purchaseCancelHandler}
+          purchaseContinued={this.purchaseContinueHandler}
+        />
+      );
+    }
+    if (this.state.loading) {
+      orderSummary = <Spinner />;
+    }
+    return (
+      <Aux>
+        <Modal
+          show={this.state.purchasing}
+          modalClosed={this.purchaseCancelHandler}
+        >
+          {orderSummary}
+        </Modal>
+        {pizza}
       </Aux>
     );
   }
