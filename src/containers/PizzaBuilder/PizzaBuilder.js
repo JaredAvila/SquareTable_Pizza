@@ -10,6 +10,7 @@ import BuildControls from "../../components/Pizza/BuildControls/BuildControls";
 import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/Pizza/OrderSummary/OrderSummary";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import withErrorHandler from "../../hoc/withErrorHandler/withErrorHanlder";
 
 const PRICES = {
   small: 7.99,
@@ -30,7 +31,7 @@ const PRICES = {
   pineapple: 1
 };
 
-export default class PizzaBuilder extends Component {
+class PizzaBuilder extends Component {
   state = {
     ingredients: {
       pepperoni: false,
@@ -54,7 +55,8 @@ export default class PizzaBuilder extends Component {
     },
     totalPrice: 9.99,
     currentSize: "medium",
-    purchasing: false
+    purchasing: false,
+    loading: false
   };
 
   addIngredientHandler = type => {
@@ -105,6 +107,7 @@ export default class PizzaBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
+    this.setState({ loading: true });
     const filteredObj = filterObject(this.state.ingredients);
     const data = {
       customer: {
@@ -123,11 +126,14 @@ export default class PizzaBuilder extends Component {
         }
       ]
     };
-    // console.log(data);
     axios
       .post("/order.json", data)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+      .then(res => {
+        this.setState({ loading: false, purchasing: false });
+      })
+      .catch(err => {
+        this.setState({ loading: false, purchasing: false });
+      });
   };
 
   render() {
@@ -168,3 +174,5 @@ export default class PizzaBuilder extends Component {
     );
   }
 }
+
+export default withErrorHandler(PizzaBuilder, axios);
