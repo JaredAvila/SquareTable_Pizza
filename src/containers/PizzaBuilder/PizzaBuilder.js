@@ -98,33 +98,34 @@ class PizzaBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
-    this.setState({ loading: true });
-    const filteredObj = filterObject(this.state.ingredients);
-    const data = {
-      customer: {
-        name: "Jared Avila",
-        address: "228 Florence St.",
-        city: "Sunnyvale",
-        state: "CA",
-        zip: "94086",
-        email: "jared@gmail.com"
-      },
-      pizzas: [
-        {
-          size: this.state.currentSize,
-          ingredients: Object.keys(filteredObj),
-          price: this.state.totalPrice
-        }
-      ]
-    };
-    axios
-      .post("/order.json", data)
-      .then(res => {
-        this.setState({ loading: false, purchasing: false });
-      })
-      .catch(err => {
-        this.setState({ loading: false, purchasing: false });
-      });
+    // this.setState({ loading: true });
+    // const filteredObj = filterObject(this.state.ingredients);
+    // const data = {
+    //   customer: {
+    //     name: "Jared Avila",
+    //     address: "228 Florence St.",
+    //     city: "Sunnyvale",
+    //     state: "CA",
+    //     zip: "94086",
+    //     email: "jared@gmail.com"
+    //   },
+    //   pizzas: [
+    //     {
+    //       size: this.state.currentSize,
+    //       ingredients: Object.keys(filteredObj),
+    //       price: this.state.totalPrice
+    //     }
+    //   ]
+    // };
+    // axios
+    //   .post("/order.json", data)
+    //   .then(res => {
+    //     this.setState({ loading: false, purchasing: false });
+    //   })
+    //   .catch(err => {
+    //     this.setState({ loading: false, purchasing: false });
+    //   });
+    this.props.history.push("/cart");
   };
 
   render() {
@@ -138,8 +139,11 @@ class PizzaBuilder extends Component {
       const filteredObj = filterObject(this.state.ingredients);
       const toppings = Object.keys(filteredObj).map(topping => topping);
       pizza = (
-        <div className={styles.PizzaContainer}>
-          <Pizza ingredients={this.state.ingredients} />
+        <div className={styles.PizzaBuilderContainer}>
+          <div className={styles.PizzaContainer}>
+            <Pizza ingredients={this.state.ingredients} />
+          </div>
+
           <BuildControls
             ingredientAdded={this.addIngredientHandler}
             sizeChanged={this.sizeSelectHandler}

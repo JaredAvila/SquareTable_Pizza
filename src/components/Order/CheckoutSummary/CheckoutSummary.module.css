@@ -1,0 +1,21 @@
+.CheckoutSummary {
+    text-align: center;
+    width: 100%;
+    margin: auto;
+}
+
+.PizzaContainer {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+}
+
+@media (min-width: 600px) {
+    .CheckoutSummary {
+        width: 500px;
+    }
+    .PizzaContainer {
+        width: 400px;
+        height: 400px;
+    }
+}

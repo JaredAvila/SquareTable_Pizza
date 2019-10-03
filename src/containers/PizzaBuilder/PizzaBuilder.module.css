@@ -1,9 +1,28 @@
 .PizzaContainer {
+    height: 600px;
+    width: 600px
+}
+
+.PizzaBuilderContainer {
     display: flex;
 }
 
 @media(max-width: 942px) {
-    .PizzaContainer {
+    .PizzaBuilderContainer {
         flex-wrap: wrap;
+    }
+}
+
+@media(min-width: 500px) {
+    .PizzaContainer {
+        width: 500px;
+        height: 500px;
+    }
+}
+
+@media(min-width: 1400px) {
+    .PizzaContainer {
+        width: 600px;
+        height: 600px;
     }
 }
