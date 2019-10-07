@@ -98,37 +98,12 @@ class PizzaBuilder extends Component {
   };
 
   purchaseContinueHandler = toppings => {
-    // this.setState({ loading: true });
-    // const filteredObj = filterObject(this.state.ingredients);
-    // const data = {
-    //   customer: {
-    //     name: "Jared Avila",
-    //     address: "228 Florence St.",
-    //     city: "Sunnyvale",
-    //     state: "CA",
-    //     zip: "94086",
-    //     email: "jared@gmail.com"
-    //   },
-    //   pizzas: [
-    //     {
-    //       size: this.state.currentSize,
-    //       ingredients: Object.keys(filteredObj),
-    //       price: this.state.totalPrice
-    //     }
-    //   ]
-    // };
-    // axios
-    //   .post("/order.json", data)
-    //   .then(res => {
-    //     this.setState({ loading: false, purchasing: false });
-    //   })
-    //   .catch(err => {
-    //     this.setState({ loading: false, purchasing: false });
-    //   });
     const queryParams = [];
     toppings.forEach(topping => {
       queryParams.push(encodeURIComponent(topping));
     });
+    queryParams.push("price=" + this.state.totalPrice);
+    queryParams.push("size=" + this.state.currentSize);
     const queryString = queryParams.join("&");
     this.props.history.push({
       pathname: "/cart",

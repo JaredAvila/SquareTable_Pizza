@@ -6,15 +6,25 @@ import ContactData from "./ContactData/ContactData";
 
 export default class ShoppingCart extends Component {
   state = {
-    ingredients: {}
+    ingredients: {},
+    totalPrice: 0,
+    size: ""
   };
   componentDidMount() {
     const query = new URLSearchParams(this.props.location.search);
     const toppings = {};
+    let price;
+    let size;
     for (let param of query.entries()) {
-      toppings[param[0]] = true;
+      if (param[0] === "price") {
+        price = param[1];
+      } else if (param[0] === "size") {
+        size = param[1];
+      } else {
+        toppings[param[0]] = true;
+      }
     }
-    this.setState({ ingredients: toppings });
+    this.setState({ ingredients: toppings, totalPrice: price, size: size });
   }
   checkoutContinuedHandler = () => {
     this.props.history.replace("/cart/contact-data");
@@ -32,7 +42,14 @@ export default class ShoppingCart extends Component {
         />
         <Route
           path={this.props.match.path + "/contact-data"}
-          component={ContactData}
+          render={props => (
+            <ContactData
+              ingredients={this.state.ingredients}
+              price={this.state.totalPrice}
+              size={this.state.size}
+              {...props}
+            />
+          )}
         />
       </div>
     );
