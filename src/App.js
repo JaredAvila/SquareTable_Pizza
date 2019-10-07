@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import Layout from "./hoc/Layout/Layout";
 import PizzaBuilder from "./containers/PizzaBuilder/PizzaBuilder";
 import ShoppingCart from "./containers/ShoppingCart/ShoppingCart";
+import Orders from "./containers/Orders/Orders";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Layout>
         <Switch>
           <Route path="/cart" component={ShoppingCart} />
+          <Route path="/orders" component={Orders} />
           <Route path="/" component={PizzaBuilder} />
         </Switch>
       </Layout>
