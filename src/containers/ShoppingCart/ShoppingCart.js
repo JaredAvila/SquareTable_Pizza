@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { Route } from "react-router-dom";
 
 import CheckoutSummary from "../../components/Order/CheckoutSummary/CheckoutSummary";
+import ContactData from "./ContactData/ContactData";
 
 export default class ShoppingCart extends Component {
   state = {
@@ -12,7 +14,6 @@ export default class ShoppingCart extends Component {
     for (let param of query.entries()) {
       toppings[param[0]] = true;
     }
-    console.log(toppings);
     this.setState({ ingredients: toppings });
   }
   checkoutContinuedHandler = () => {
@@ -28,6 +29,10 @@ export default class ShoppingCart extends Component {
           ingredients={this.state.ingredients}
           checkoutContinued={this.checkoutContinuedHandler}
           checkoutCancelled={this.checkoutCancelledHandler}
+        />
+        <Route
+          path={this.props.match.path + "/contact-data"}
+          component={ContactData}
         />
       </div>
     );
