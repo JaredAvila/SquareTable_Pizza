@@ -4,13 +4,19 @@ import CheckoutSummary from "../../components/Order/CheckoutSummary/CheckoutSumm
 
 export default class ShoppingCart extends Component {
   state = {
-    ingredients: {
-      pepperoni: true,
-      ham: true
-    }
+    ingredients: {}
   };
+  componentDidMount() {
+    const query = new URLSearchParams(this.props.location.search);
+    const toppings = {};
+    for (let param of query.entries()) {
+      toppings[param[0]] = true;
+    }
+    console.log(toppings);
+    this.setState({ ingredients: toppings });
+  }
   checkoutContinuedHandler = () => {
-    this.props.history.replace("/chekcout/contact-data");
+    this.props.history.replace("/cart/contact-data");
   };
   checkoutCancelledHandler = () => {
     this.props.history.goBack();
