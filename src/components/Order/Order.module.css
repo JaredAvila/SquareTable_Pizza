@@ -5,6 +5,13 @@
   padding: 10px;
   margin: 10px auto;
   box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Pizzcontainer {
+  height: 100px;
+  width: 100px;
 }
 
 @media (min-width: 600px) {

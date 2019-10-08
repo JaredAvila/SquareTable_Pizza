@@ -29,13 +29,11 @@ export default class ContactData extends Component {
         zip: "94086",
         email: "jared@gmail.com"
       },
-      pizzas: [
-        {
-          size: this.props.size,
-          ingredients: this.props.ingredients,
-          price: this.props.price
-        }
-      ]
+      pizza: {
+        size: this.props.size,
+        ingredients: this.props.ingredients,
+        price: this.props.price
+      }
     };
     axios
       .post("/order.json", data)
