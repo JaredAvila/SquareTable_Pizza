@@ -90,36 +90,23 @@ export default class ContactData extends Component {
   };
 
   render() {
+    const formElementsArray = [];
+    for (let key in this.state.orderForm) {
+      formElementsArray.push({
+        id: key,
+        config: this.state.orderForm[key]
+      });
+    }
     let form = (
       <form action="">
-        <Input elementType="..." elementConfig="..." value="..." />
-        <Input
-          inputtype="input"
-          type="text"
-          name="email"
-          placeholder="Your Email"
-        />
-        <p>Address:</p>
-        <Input
-          inputtype="input"
-          type="text"
-          name="street"
-          placeholder="Street"
-        />
-        <Input inputtype="input" type="text" name="city" placeholder="City" />
-        <Input
-          inputtype="input"
-          type="text"
-          name="state"
-          placeholder="State ex/ CA"
-          maxLength="2"
-        />
-        <Input
-          inputtype="input"
-          type="text"
-          name="zip"
-          placeholder="Zip Code"
-        />
+        {formElementsArray.map(el => (
+          <Input
+            key={el.id}
+            elementType={el.config.elementType}
+            elementConfig={el.config.elementConfig}
+            value={el.config.value}
+          />
+        ))}
         <Button clicked={this.onSubmitHanlder} buttonType="Success">
           Place Order
         </Button>
