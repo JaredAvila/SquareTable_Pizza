@@ -97,6 +97,7 @@ export default class ContactData extends Component {
         touched: false
       }
     },
+    formIsValid: false,
     loading: false
   };
 
@@ -151,8 +152,12 @@ export default class ContactData extends Component {
     );
     updatedFormElement.touched = true;
     updatedOrderForm[formElement] = updatedFormElement;
-    console.log(updatedFormElement);
-    this.setState({ orderForm: updatedOrderForm });
+
+    let formIsValid = true;
+    for (let inputId in updatedOrderForm) {
+      formIsValid = updatedOrderForm[inputId].valid && formIsValid;
+    }
+    this.setState({ orderForm: updatedOrderForm, formIsValid: formIsValid });
   };
 
   render() {
@@ -176,7 +181,11 @@ export default class ContactData extends Component {
             touched={el.config.touched}
           />
         ))}
-        <Button type="submit" buttonType="Success">
+        <Button
+          type="submit"
+          buttonType="Success"
+          disabled={!this.state.formIsValid}
+        >
           Place Order
         </Button>
       </form>
