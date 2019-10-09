@@ -7,13 +7,62 @@ import Input from "../../../components/UI/Input/Input";
 
 export default class ContactData extends Component {
   state = {
-    name: "",
-    email: "",
-    address: {
-      street: "",
-      city: "",
-      state: "",
-      zip: ""
+    orderForm: {
+      name: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Your Name",
+          name: "name"
+        },
+        value: ""
+      },
+      email: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Email",
+          name: "email"
+        },
+        value: ""
+      },
+      street: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Street",
+          name: "street"
+        },
+        value: ""
+      },
+      city: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "City",
+          name: "city"
+        },
+        value: ""
+      },
+      state: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "State",
+          name: "name",
+          maxLength: 2
+        },
+        value: ""
+      },
+      zip: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "ZIP Code",
+          name: "zip"
+        },
+        value: ""
+      }
     },
     loading: false
   };
@@ -22,14 +71,7 @@ export default class ContactData extends Component {
     e.preventDefault();
     this.setState({ loading: true });
     const data = {
-      customer: {
-        name: "Jared Avila",
-        address: "228 Florence St.",
-        city: "Sunnyvale",
-        state: "CA",
-        zip: "94086",
-        email: "jared@gmail.com"
-      },
+      customer: {},
       pizza: {
         size: this.props.size,
         ingredients: this.props.ingredients,
@@ -50,12 +92,7 @@ export default class ContactData extends Component {
   render() {
     let form = (
       <form action="">
-        <Input
-          inputtype="input"
-          type="text"
-          name="name"
-          placeholder="Your Name"
-        />
+        <Input elementType="..." elementConfig="..." value="..." />
         <Input
           inputtype="input"
           type="text"
