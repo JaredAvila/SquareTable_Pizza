@@ -35,8 +35,8 @@ class Orders extends Component {
           return (
             <Order
               key={order.id}
-              pizza={order.pizza}
-              customer={order.customer}
+              pizza={order.orderData}
+              customer={order.customerData}
             />
           );
         })}

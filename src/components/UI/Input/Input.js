@@ -11,6 +11,7 @@ const Input = props => {
           className={styles.InputEl}
           {...props.elementConfig}
           value={props.value}
+          onChange={props.changed}
         ></textarea>
       );
       break;
@@ -20,6 +21,7 @@ const Input = props => {
           className={styles.InputEl}
           {...props.elementConfig}
           value={props.value}
+          onChange={props.changed}
         />
       );
   }

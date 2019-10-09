@@ -70,9 +70,13 @@ export default class ContactData extends Component {
   onSubmitHanlder = e => {
     e.preventDefault();
     this.setState({ loading: true });
+    const formData = {};
+    for (let elId in this.state.orderForm) {
+      formData[elId] = this.state.orderForm[elId].value;
+    }
     const data = {
-      customer: {},
-      pizza: {
+      customerData: formData,
+      orderData: {
         size: this.props.size,
         ingredients: this.props.ingredients,
         price: this.props.price
@@ -89,6 +93,18 @@ export default class ContactData extends Component {
       });
   };
 
+  inputChangedHandler = (e, formElement) => {
+    const updatedOrderForm = {
+      ...this.state.orderForm
+    };
+    const updatedFormElement = {
+      ...updatedOrderForm[formElement]
+    };
+    updatedFormElement.value = e.target.value;
+    updatedOrderForm[formElement] = updatedFormElement;
+    this.setState({ orderForm: updatedOrderForm });
+  };
+
   render() {
     const formElementsArray = [];
     for (let key in this.state.orderForm) {
@@ -98,16 +114,17 @@ export default class ContactData extends Component {
       });
     }
     let form = (
-      <form action="">
+      <form onSubmit={this.onSubmitHanlder}>
         {formElementsArray.map(el => (
           <Input
             key={el.id}
             elementType={el.config.elementType}
             elementConfig={el.config.elementConfig}
             value={el.config.value}
+            changed={e => this.inputChangedHandler(e, el.id)}
           />
         ))}
-        <Button clicked={this.onSubmitHanlder} buttonType="Success">
+        <Button type="submit" buttonType="Success">
           Place Order
         </Button>
       </form>
