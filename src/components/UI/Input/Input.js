@@ -3,12 +3,18 @@ import React from "react";
 import * as styles from "./Input.module.css";
 
 const Input = props => {
+  const inputClasses = [styles.InputEl];
+
+  if (props.invalid && props.touched) {
+    inputClasses.push(styles.Invalid);
+  }
+
   let inputEl;
   switch (props.elementType) {
     case "textarea":
       inputEl = (
         <textarea
-          className={styles.InputEl}
+          className={inputClasses.join(" ")}
           {...props.elementConfig}
           value={props.value}
           onChange={props.changed}
@@ -18,7 +24,7 @@ const Input = props => {
     default:
       inputEl = (
         <input
-          className={styles.InputEl}
+          className={inputClasses.join(" ")}
           {...props.elementConfig}
           value={props.value}
           onChange={props.changed}
