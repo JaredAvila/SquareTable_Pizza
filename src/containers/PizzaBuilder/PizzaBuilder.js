@@ -132,11 +132,11 @@ class PizzaBuilder extends Component {
 
 const mapStateToProps = state => {
   return {
-    ings: state.ingredients,
-    prices: state.prices,
-    size: state.currentSize,
-    totalPrice: state.totalPrice,
-    error: state.error
+    ings: state.pizzaBuilder.ingredients,
+    prices: state.pizzaBuilder.prices,
+    size: state.pizzaBuilder.currentSize,
+    totalPrice: state.pizzaBuilder.totalPrice,
+    error: state.pizzaBuilder.error
   };
 };
 

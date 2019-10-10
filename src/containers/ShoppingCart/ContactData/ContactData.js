@@ -5,6 +5,8 @@ import axios from "../../../axios-orders";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import Input from "../../../components/UI/Input/Input";
 import { connect } from "react-redux";
+import withErrorHanlder from "../../../hoc/withErrorHandler/withErrorHanlder";
+import * as orderActions from "../../../store/actions/";
 
 class ContactData extends Component {
   state = {
@@ -106,7 +108,6 @@ class ContactData extends Component {
 
   onSubmitHanlder = e => {
     e.preventDefault();
-    this.setState({ loading: true });
     const formData = {};
     for (let elId in this.state.orderForm) {
       formData[elId] = this.state.orderForm[elId].value;
@@ -119,15 +120,7 @@ class ContactData extends Component {
         price: this.props.price
       }
     };
-    axios
-      .post("/order.json", data)
-      .then(res => {
-        this.setState({ loading: false });
-        this.props.history.push("/");
-      })
-      .catch(err => {
-        this.setState({ loading: false });
-      });
+    this.props.onOrderPizza(data);
   };
 
   checkValidity(value, rules) {
@@ -209,7 +202,7 @@ class ContactData extends Component {
         </Button>
       </form>
     );
-    if (this.state.loading) {
+    if (this.props.loading) {
       form = <Spinner />;
     }
     return (
@@ -223,10 +216,20 @@ class ContactData extends Component {
 
 const mapStateToProps = state => {
   return {
-    ings: state.ingredients,
-    size: state.currentSize,
-    price: state.totalPrice
+    ings: state.pizzaBuilder.ingredients,
+    size: state.pizzaBuilder.currentSize,
+    price: state.pizzaBuilder.totalPrice,
+    loading: state.order.loading
   };
 };
 
-export default connect(mapStateToProps)(ContactData);
+const mapDispatchToProps = dispatch => {
+  return {
+    onOrderPizza: orderData => dispatch(orderActions.purchasedPizza(orderData))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withErrorHanlder(ContactData, axios));
