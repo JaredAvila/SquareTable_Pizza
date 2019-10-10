@@ -30,14 +30,7 @@ class PizzaBuilder extends Component {
   };
 
   componentDidMount() {
-    // axios
-    //   .get("https://squaretable-1984f.firebaseio.com/toppings.json")
-    //   .then(res => {
-    //     this.setState({ ingredients: res.data });
-    //   })
-    //   .catch(err => {
-    //     this.setState({ error: true });
-    //   });
+    
     // axios
     //   .get("https://squaretable-1984f.firebaseio.com/prices.json")
     //   .then(res => {

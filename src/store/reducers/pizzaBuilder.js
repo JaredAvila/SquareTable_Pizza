@@ -1,20 +1,21 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  ingredients: {
-    pepperoni: false,
-    bacon: false,
-    sausage: false,
-    beef: false,
-    ham: false,
-    chicken: false,
-    tomatoes: false,
-    peppers: false,
-    olives: false,
-    mushrooms: false,
-    onions: false,
-    pineapple: false
-  },
+  ingredients: null,
+  // ingredients: {
+  //   pepperoni: false,
+  //   bacon: false,
+  //   sausage: false,
+  //   beef: false,
+  //   ham: false,
+  //   chicken: false,
+  //   tomatoes: false,
+  //   peppers: false,
+  //   olives: false,
+  //   mushrooms: false,
+  //   onions: false,
+  //   pineapple: false
+  // },
   prices: {
     pepperoni: 0.75,
     bacon: 1,
@@ -34,7 +35,8 @@ const initialState = {
     ExtraLarge: 13.99
   },
   totalPrice: 9.99,
-  currentSize: "medium"
+  currentSize: "medium",
+  error: false
 };
 
 const reducer = (state = initialState, action) => {
