@@ -12,7 +12,7 @@ import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/Pizza/OrderSummary/OrderSummary";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHanlder";
-import * as actionTypes from "../../store/actions";
+import * as pizzaBuilderActions from "../../store/actions/";
 
 // let PRICES = {};
 
@@ -157,9 +157,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onIngredientUpdated: name =>
-      dispatch({ type: actionTypes.UPDATE_INGREDIENT, name }),
-    onSizeUpdated: size => dispatch({ type: actionTypes.UPDATE_SIZE, size }),
-    onPriceUpdated: price => dispatch({ type: actionTypes.UPDATE_PRICE, price })
+      dispatch(pizzaBuilderActions.updateIngredient(name)),
+    onSizeUpdated: size => dispatch(pizzaBuilderActions.updateSize(size)),
+    onPriceUpdated: price => dispatch(pizzaBuilderActions.updatePrice(price))
   };
 };
 
