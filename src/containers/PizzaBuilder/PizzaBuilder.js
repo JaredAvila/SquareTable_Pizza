@@ -24,7 +24,6 @@ class PizzaBuilder extends Component {
       large: false,
       ExtraLarge: false
     },
-    totalPrice: 9.99,
     purchasing: false,
     loading: false,
     error: false
@@ -50,21 +49,15 @@ class PizzaBuilder extends Component {
   }
 
   addIngredientHandler = type => {
-    const updatedIngredients = {
-      ...this.state.ingredients
-    };
-    updatedIngredients[type] = !this.state.ingredients[type];
+    this.props.onIngredientUpdated(type);
     let newPrice;
-    if (!this.state.ingredients[type]) {
-      newPrice = this.state.totalPrice + this.props.prices[type];
+    if (!this.props.ings[type]) {
+      newPrice = this.props.totalPrice + this.props.prices[type];
     } else {
-      newPrice = this.state.totalPrice - this.props.prices[type];
+      newPrice = this.props.totalPrice - this.props.prices[type];
     }
     newPrice = parseFloat(newPrice.toFixed(2));
-    this.setState({
-      totalPrice: newPrice,
-      ingredients: updatedIngredients
-    });
+    this.props.onPriceUpdated(newPrice);
   };
   sizeSelectHandler = size => {
     const updatedSize = {
@@ -74,17 +67,16 @@ class PizzaBuilder extends Component {
     for (let check in this.state.size) {
       if (updatedSize[check]) {
         updatedSize[check] = !updatedSize[check];
-        newPrice = this.state.totalPrice - this.props.prices[check];
+        newPrice = this.props.totalPrice - this.props.prices[check];
       }
     }
     updatedSize[size] = !this.state.size[size];
     newPrice = newPrice + this.props.prices[size];
     newPrice = parseFloat(newPrice.toFixed(2));
-    // const newSize = size;
+    this.props.onPriceUpdated(newPrice);
     this.props.onSizeUpdated(size);
     this.setState({
-      size: updatedSize,
-      totalPrice: newPrice
+      size: updatedSize
     });
   };
 
@@ -127,11 +119,11 @@ class PizzaBuilder extends Component {
           </div>
 
           <BuildControls
-            ingredientAdded={this.props.onIngredientUpdated}
+            ingredientAdded={this.addIngredientHandler}
             sizeChanged={this.sizeSelectHandler}
             disabled={this.props.ings}
             size={this.state.size}
-            price={this.state.totalPrice}
+            price={this.props.totalPrice}
             purchase={this.purchaseHandler}
           />
         </div>
@@ -139,7 +131,7 @@ class PizzaBuilder extends Component {
       orderSummary = (
         <OrderSummary
           toppings={toppings}
-          price={this.state.totalPrice}
+          price={this.props.totalPrice}
           size={this.props.size}
           purchaseCancelled={this.purchaseCancelHandler}
           purchaseContinued={() => this.purchaseContinueHandler(toppings)}
@@ -167,7 +159,8 @@ const mapStateToProps = state => {
   return {
     ings: state.ingredients,
     prices: state.prices,
-    size: state.currentSize
+    size: state.currentSize,
+    totalPrice: state.totalPrice
   };
 };
 
@@ -175,7 +168,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onIngredientUpdated: name =>
       dispatch({ type: actionTypes.UPDATE_INGREDIENT, name }),
-    onSizeUpdated: size => dispatch({ type: actionTypes.UPDATE_SIZE, size })
+    onSizeUpdated: size => dispatch({ type: actionTypes.UPDATE_SIZE, size }),
+    onPriceUpdated: price => dispatch({ type: actionTypes.UPDATE_PRICE, price })
   };
 };
 

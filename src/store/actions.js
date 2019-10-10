@@ -1,2 +1,3 @@
 export const UPDATE_INGREDIENT = "UPDATE_INGREDIENT";
 export const UPDATE_SIZE = "UPDATE_SIZE";
+export const UPDATE_PRICE = "UPDATE_PRICE";

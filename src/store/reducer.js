@@ -52,6 +52,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         currentSize: action.size
       };
+    case actionTypes.UPDATE_PRICE:
+      return {
+        ...state,
+        totalPrice: action.price
+      };
     default:
       return state;
   }
