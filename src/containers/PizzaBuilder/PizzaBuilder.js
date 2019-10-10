@@ -88,18 +88,8 @@ class PizzaBuilder extends Component {
     this.setState({ purchasing: false });
   };
 
-  purchaseContinueHandler = toppings => {
-    const queryParams = [];
-    toppings.forEach(topping => {
-      queryParams.push(encodeURIComponent(topping));
-    });
-    queryParams.push("price=" + this.state.totalPrice);
-    queryParams.push("size=" + this.state.currentSize);
-    const queryString = queryParams.join("&");
-    this.props.history.push({
-      pathname: "/cart",
-      search: "?" + queryString
-    });
+  purchaseContinueHandler = () => {
+    this.props.history.push("/cart");
   };
 
   render() {
@@ -134,7 +124,7 @@ class PizzaBuilder extends Component {
           price={this.props.totalPrice}
           size={this.props.size}
           purchaseCancelled={this.purchaseCancelHandler}
-          purchaseContinued={() => this.purchaseContinueHandler(toppings)}
+          purchaseContinued={this.purchaseContinueHandler}
         />
       );
     }
