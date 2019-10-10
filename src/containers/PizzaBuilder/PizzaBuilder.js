@@ -84,7 +84,7 @@ class PizzaBuilder extends Component {
       <Spinner />
     );
     let orderSummary = null;
-    if (this.props.ings) {
+    if (this.props.ings && this.props.prices) {
       const filteredObj = filterObject(this.props.ings);
       const toppings = Object.keys(filteredObj).map(topping => topping);
       pizza = (
