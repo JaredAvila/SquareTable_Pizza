@@ -25,20 +25,12 @@ class PizzaBuilder extends Component {
       ExtraLarge: false
     },
     purchasing: false,
-    loading: false,
-    error: false
+    loading: false
   };
 
   componentDidMount() {
-    
-    // axios
-    //   .get("https://squaretable-1984f.firebaseio.com/prices.json")
-    //   .then(res => {
-    //     PRICES = res.data;
-    //   })
-    //   .catch(err => {
-    //     this.setState({ error: true });
-    //   });
+    this.props.onInitIngredients();
+    this.props.onInitPrices();
   }
 
   addIngredientHandler = type => {
@@ -86,7 +78,7 @@ class PizzaBuilder extends Component {
   };
 
   render() {
-    let pizza = this.state.error ? (
+    let pizza = this.props.error ? (
       <p>Something went wrong. =(</p>
     ) : (
       <Spinner />
@@ -143,7 +135,8 @@ const mapStateToProps = state => {
     ings: state.ingredients,
     prices: state.prices,
     size: state.currentSize,
-    totalPrice: state.totalPrice
+    totalPrice: state.totalPrice,
+    error: state.error
   };
 };
 
@@ -152,7 +145,9 @@ const mapDispatchToProps = dispatch => {
     onIngredientUpdated: name =>
       dispatch(pizzaBuilderActions.updateIngredient(name)),
     onSizeUpdated: size => dispatch(pizzaBuilderActions.updateSize(size)),
-    onPriceUpdated: price => dispatch(pizzaBuilderActions.updatePrice(price))
+    onPriceUpdated: price => dispatch(pizzaBuilderActions.updatePrice(price)),
+    onInitIngredients: () => dispatch(pizzaBuilderActions.initIngredients()),
+    onInitPrices: () => dispatch(pizzaBuilderActions.initPrices())
   };
 };
 

@@ -29,9 +29,16 @@ export const setIngredients = ingredients => {
   };
 };
 
-export const fetchIngredientsFailed = () => {
+export const setPrices = prices => {
   return {
-    type: actionTypes.FETCH_INGREDIENTS_FAILED
+    type: actionTypes.SET_PRICES,
+    prices
+  };
+};
+
+export const fetchFailed = () => {
+  return {
+    type: actionTypes.FETCH_FAILED
   };
 };
 
@@ -43,7 +50,29 @@ export const initIngredients = () => {
         dispatch(setIngredients(res.data));
       })
       .catch(err => {
-        dispatch(fetchIngredientsFailed());
+        dispatch(fetchFailed());
       });
   };
 };
+
+export const initPrices = () => {
+  return dispatch => {
+    axios
+      .get("https://squaretable-1984f.firebaseio.com/prices.json")
+      .then(res => {
+        dispatch(setPrices(res.data));
+      })
+      .catch(err => {
+        dispatch(fetchFailed());
+      });
+  };
+};
+
+// axios
+//
+//   .then(res => {
+//     PRICES = res.data;
+//   })
+//   .catch(err => {
+//     this.setState({ error: true });
+//   });
