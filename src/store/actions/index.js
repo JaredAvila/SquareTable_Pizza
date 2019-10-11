@@ -7,3 +7,4 @@ export {
   resetPrice
 } from "./pizzaBuilder";
 export { purchasedPizza, purchaseInit, fetchOrders } from "./order";
+export { auth } from "./auth";
