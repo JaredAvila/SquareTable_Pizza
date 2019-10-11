@@ -6,4 +6,4 @@ export {
   initPrices,
   resetPrice
 } from "./pizzaBuilder";
-export { purchasedPizza, purchaseInit } from "./order";
+export { purchasedPizza, purchaseInit, fetchOrders } from "./order";
