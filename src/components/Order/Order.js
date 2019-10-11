@@ -1,6 +1,7 @@
 import React from "react";
 
 import Pizza from "../Pizza/Pizza";
+import filterObject from "../../helper/filterObject";
 
 import * as styles from "./Order.module.css";
 
@@ -9,6 +10,7 @@ const Order = props => {
   let pizzaIngs;
   if (props.pizza.ingredients) {
     pizzaIngs = props.pizza.ingredients;
+    pizzaIngs = filterObject(pizzaIngs);
     ingArr = Object.keys(pizzaIngs);
     if (ingArr.length === 1) {
       ingArr = ingArr.join(" ");
