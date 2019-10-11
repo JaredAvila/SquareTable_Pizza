@@ -3,6 +3,7 @@ export {
   updatePrice,
   updateSize,
   initIngredients,
-  initPrices
+  initPrices,
+  resetPrice
 } from "./pizzaBuilder";
-export { purchasedPizza } from "./order";
+export { purchasedPizza, purchaseInit } from "./order";

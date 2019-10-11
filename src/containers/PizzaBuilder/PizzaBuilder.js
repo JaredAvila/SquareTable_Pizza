@@ -31,6 +31,7 @@ class PizzaBuilder extends Component {
   componentDidMount() {
     this.props.onInitIngredients();
     this.props.onInitPrices();
+    this.props.onResetPriceAndSize();
   }
 
   addIngredientHandler = type => {
@@ -147,7 +148,8 @@ const mapDispatchToProps = dispatch => {
     onSizeUpdated: size => dispatch(pizzaBuilderActions.updateSize(size)),
     onPriceUpdated: price => dispatch(pizzaBuilderActions.updatePrice(price)),
     onInitIngredients: () => dispatch(pizzaBuilderActions.initIngredients()),
-    onInitPrices: () => dispatch(pizzaBuilderActions.initPrices())
+    onInitPrices: () => dispatch(pizzaBuilderActions.initPrices()),
+    onResetPriceAndSize: () => dispatch(pizzaBuilderActions.resetPrice())
   };
 };
 

@@ -28,6 +28,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         totalPrice: action.price
       };
+    case actionTypes.RESET_PRICE:
+      return {
+        ...state,
+        totalPrice: 9.99,
+        currentSize: "medium"
+      };
     case actionTypes.SET_INGREDIENTS:
       return {
         ...state,

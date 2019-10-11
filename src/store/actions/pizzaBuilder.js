@@ -36,6 +36,12 @@ export const setPrices = prices => {
   };
 };
 
+export const resetPrice = () => {
+  return {
+    type: actionTypes.RESET_PRICE
+  };
+};
+
 export const fetchFailed = () => {
   return {
     type: actionTypes.FETCH_FAILED
@@ -67,12 +73,3 @@ export const initPrices = () => {
       });
   };
 };
-
-// axios
-//
-//   .then(res => {
-//     PRICES = res.data;
-//   })
-//   .catch(err => {
-//     this.setState({ error: true });
-//   });
