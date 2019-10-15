@@ -82,3 +82,10 @@ export const fetchOrders = token => {
       });
   };
 };
+
+
+export const clearOrders = () => {
+  return {
+    type: actionTypes.CLEAR_ORDERS
+  };
+};
