@@ -114,12 +114,13 @@ class ContactData extends Component {
       formData[elId] = this.state.orderForm[elId].value;
     }
     const data = {
-      customerData: { ...formData, userId: this.props.userId },
+      customerData: formData,
       orderData: {
         size: this.props.size,
         ingredients: this.props.ings,
         price: this.props.price
-      }
+      },
+      userId: this.props.userId
     };
     this.props.onOrderPizza(data, this.props.token);
   };
