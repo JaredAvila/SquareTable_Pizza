@@ -11,12 +11,14 @@ import thunk from "redux-thunk";
 
 import pizzaBuilderReducer from "./store/reducers/pizzaBuilder";
 import orderReducer from "./store/reducers/order";
+import authReducer from "./store/reducers/auth";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
   pizzaBuilder: pizzaBuilderReducer,
-  order: orderReducer
+  order: orderReducer,
+  auth: authReducer
 });
 
 const store = createStore(
