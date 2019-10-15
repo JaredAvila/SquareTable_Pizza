@@ -26,7 +26,7 @@ export const purchasedPizza = (orderData, token) => {
   return dispatch => {
     dispatch(purchasedPizzaStart());
     axios
-      .post("/order.json" + token, orderData)
+      .post("/order.json?auth=" + token, orderData)
       .then(res => {
         dispatch(purchasedPizzaSuccess(res.data.name, orderData));
       })
@@ -82,7 +82,6 @@ export const fetchOrders = token => {
       });
   };
 };
-
 
 export const clearOrders = () => {
   return {
