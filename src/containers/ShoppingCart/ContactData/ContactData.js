@@ -7,7 +7,7 @@ import Input from "../../../components/UI/Input/Input";
 import { connect } from "react-redux";
 import withErrorHanlder from "../../../hoc/withErrorHandler/withErrorHanlder";
 import * as orderActions from "../../../store/actions/";
-import checkValidity from "../../../helper/checkValidity"
+import checkValidity from "../../../helper/checkValidity";
 
 class ContactData extends Component {
   state = {
@@ -114,7 +114,7 @@ class ContactData extends Component {
       formData[elId] = this.state.orderForm[elId].value;
     }
     const data = {
-      customerData: formData,
+      customerData: { ...formData, userId: this.props.userId },
       orderData: {
         size: this.props.size,
         ingredients: this.props.ings,
@@ -194,13 +194,15 @@ const mapStateToProps = state => {
     size: state.pizzaBuilder.currentSize,
     price: state.pizzaBuilder.totalPrice,
     loading: state.order.loading,
-    token: state.auth.token
+    token: state.auth.token,
+    userId: state.auth.userId
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onOrderPizza: (orderData, token) => dispatch(orderActions.purchasedPizza(orderData, token))
+    onOrderPizza: (orderData, token) =>
+      dispatch(orderActions.purchasedPizza(orderData, token))
   };
 };
 

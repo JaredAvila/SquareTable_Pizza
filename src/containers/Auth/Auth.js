@@ -19,7 +19,8 @@ class Auth extends Component {
         elementConfig: {
           type: "text",
           placeholder: "Email",
-          name: "email"
+          name: "email",
+          autoComplete: "username"
         },
         value: "",
         validation: {
@@ -34,7 +35,8 @@ class Auth extends Component {
         elementConfig: {
           type: "password",
           placeholder: "Password",
-          name: "password"
+          name: "password",
+          autoComplete: "current-password"
         },
         value: "",
         validation: {
