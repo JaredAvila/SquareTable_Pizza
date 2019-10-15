@@ -1,15 +1,23 @@
 import React, { Component } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import asyncComponent from "./hoc/asyncComponent/asyncComonent";
 
 import * as actions from "./store/actions/";
 
 import Layout from "./hoc/Layout/Layout";
 import PizzaBuilder from "./containers/PizzaBuilder/PizzaBuilder";
-import ShoppingCart from "./containers/ShoppingCart/ShoppingCart";
-import Orders from "./containers/Orders/Orders";
-import Auth from "./containers/Auth/Auth";
 import Logout from "./containers/Auth/Logout/Logout";
+
+const asyncShoppingCart = asyncComponent(() => {
+  return import("./containers/ShoppingCart/ShoppingCart");
+});
+const asyncOrders = asyncComponent(() => {
+  return import("./containers/Orders/Orders");
+});
+const asyncAuth = asyncComponent(() => {
+  return import("./containers/Auth/Auth");
+});
 
 class App extends Component {
   componentDidMount() {
@@ -18,7 +26,7 @@ class App extends Component {
   render() {
     let routes = (
       <Switch>
-        <Route path="/auth" component={Auth} />
+        <Route path="/auth" component={asyncAuth} />
         <Route path="/" component={PizzaBuilder} />
       </Switch>
     );
@@ -26,9 +34,9 @@ class App extends Component {
     if (this.props.isAuthenticated) {
       routes = (
         <Switch>
-          <Route path="/auth" component={Auth} />
-          <Route path="/cart" component={ShoppingCart} />
-          <Route path="/orders" component={Orders} />
+          <Route path="/auth" component={asyncAuth} />
+          <Route path="/cart" component={asyncShoppingCart} />
+          <Route path="/orders" component={asyncOrders} />
           <Route path="/logout" component={Logout} />
           <Route path="/" component={PizzaBuilder} />
         </Switch>
