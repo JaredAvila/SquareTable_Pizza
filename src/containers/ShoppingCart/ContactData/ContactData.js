@@ -121,7 +121,7 @@ class ContactData extends Component {
         price: this.props.price
       }
     };
-    this.props.onOrderPizza(data);
+    this.props.onOrderPizza(data, this.props.token);
   };
 
   inputChangedHandler = (e, formElement) => {
@@ -193,13 +193,14 @@ const mapStateToProps = state => {
     ings: state.pizzaBuilder.ingredients,
     size: state.pizzaBuilder.currentSize,
     price: state.pizzaBuilder.totalPrice,
-    loading: state.order.loading
+    loading: state.order.loading,
+    token: state.auth.token
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onOrderPizza: orderData => dispatch(orderActions.purchasedPizza(orderData))
+    onOrderPizza: (orderData, token) => dispatch(orderActions.purchasedPizza(orderData, token))
   };
 };
 
