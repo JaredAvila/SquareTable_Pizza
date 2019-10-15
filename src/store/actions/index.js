@@ -6,5 +6,10 @@ export {
   initPrices,
   resetPrice
 } from "./pizzaBuilder";
-export { purchasedPizza, purchaseInit, fetchOrders, clearOrders } from "./order";
-export { auth, logout } from "./auth";
+export {
+  purchasedPizza,
+  purchaseInit,
+  fetchOrders,
+  clearOrders
+} from "./order";
+export { auth, logout, setAuthRedirectPath } from "./auth";

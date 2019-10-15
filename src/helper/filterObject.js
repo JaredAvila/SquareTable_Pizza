@@ -1,6 +1,6 @@
 const filterObject = list => {
   const filteredObj = Object.keys(list).reduce((p, c) => {
-    if (list[c]) p[c] = list[c];
+    if (list[c] && c) p[c] = list[c];
     return p;
   }, {});
   return filteredObj;

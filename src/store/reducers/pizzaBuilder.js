@@ -6,18 +6,22 @@ const initialState = {
   prices: null,
   totalPrice: 9.99,
   currentSize: "medium",
-  error: false
+  error: false,
+  building: false
 };
 
 const updateIngredientHandler = (state, action) => {
   const updatedIngredients = updateObject(state.ingredients, {
     [action.name]: !state.ingredients[action.name]
   });
-  return updateObject(state, { ingredients: updatedIngredients });
+  return updateObject(state, {
+    ingredients: updatedIngredients,
+    building: true
+  });
 };
 
 const updateSize = (state, action) => {
-  return updateObject(state, { currentSize: action.size });
+  return updateObject(state, { currentSize: action.size, building: true });
 };
 
 const updatePrice = (state, action) => {
@@ -31,7 +35,8 @@ const resetPrice = (state, action) => {
 const setIngredients = (state, action) => {
   return updateObject(state, {
     ingredients: action.ingredients,
-    error: false
+    error: false,
+    building: false
   });
 };
 

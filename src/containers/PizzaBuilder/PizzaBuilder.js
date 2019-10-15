@@ -12,7 +12,7 @@ import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/Pizza/OrderSummary/OrderSummary";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHanlder";
-import * as pizzaBuilderActions from "../../store/actions/";
+import * as actions from "../../store/actions/";
 
 // let PRICES = {};
 
@@ -67,7 +67,12 @@ class PizzaBuilder extends Component {
   };
 
   purchaseHandler = () => {
-    this.setState({ purchasing: true });
+    if (this.props.isAuthenticated) {
+      this.setState({ purchasing: true });
+    } else {
+      this.props.onSetAuthRedirectPath("/cart");
+      this.props.history.push("/auth");
+    }
   };
 
   purchaseCancelHandler = () => {
@@ -101,6 +106,7 @@ class PizzaBuilder extends Component {
             size={this.state.size}
             price={this.props.totalPrice}
             purchase={this.purchaseHandler}
+            isAuth={this.props.isAuthenticated}
           />
         </div>
       );
@@ -137,19 +143,20 @@ const mapStateToProps = state => {
     prices: state.pizzaBuilder.prices,
     size: state.pizzaBuilder.currentSize,
     totalPrice: state.pizzaBuilder.totalPrice,
-    error: state.pizzaBuilder.error
+    error: state.pizzaBuilder.error,
+    isAuthenticated: state.auth.token !== null
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onIngredientUpdated: name =>
-      dispatch(pizzaBuilderActions.updateIngredient(name)),
-    onSizeUpdated: size => dispatch(pizzaBuilderActions.updateSize(size)),
-    onPriceUpdated: price => dispatch(pizzaBuilderActions.updatePrice(price)),
-    onInitIngredients: () => dispatch(pizzaBuilderActions.initIngredients()),
-    onInitPrices: () => dispatch(pizzaBuilderActions.initPrices()),
-    onResetPriceAndSize: () => dispatch(pizzaBuilderActions.resetPrice())
+    onIngredientUpdated: name => dispatch(actions.updateIngredient(name)),
+    onSizeUpdated: size => dispatch(actions.updateSize(size)),
+    onPriceUpdated: price => dispatch(actions.updatePrice(price)),
+    onInitIngredients: () => dispatch(actions.initIngredients()),
+    onInitPrices: () => dispatch(actions.initPrices()),
+    onResetPriceAndSize: () => dispatch(actions.resetPrice()),
+    onSetAuthRedirectPath: path => dispatch(actions.setAuthRedirectPath(path))
   };
 };
 
