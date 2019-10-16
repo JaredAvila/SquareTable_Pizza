@@ -1,31 +1,73 @@
 .Landing {
-    background-color: black;
-    height: 10000px;
+  background-color: black;
+  height: 10000px;
 }
 
 .Container {
-    background: linear-gradient(rgb(0, 0, 34), rgb(95, 51, 33));
-    height: 100vh;
-    position: relative;
+  background: linear-gradient(rgb(0, 0, 41), rgb(102, 45, 23));
+  height: 100vh;
+  position: relative;
 }
 
 .CityLineTitle {
-    font-family: 'Dosis', sans-serif;
-    color: white;
-    font-size: 5rem;
-    letter-spacing: .3rem;
-    font-weight: normal;
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 20;
+  font-family: "Dosis", sans-serif;
+  color: white;
+  font-size: 7rem;
+  width: 100%;
+  text-align: center;
+  letter-spacing: 0.3rem;
+  font-weight: normal;
+  position: absolute;
+  top: 70%;
+  z-index: 20;
+}
+
+.OrderBtn {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  z-index: 20;
+  text-decoration: none;
+  background-color: rgb(160, 24, 0);
+  padding: 15px 25px;
+  font-size: 1.4rem;
+  border-radius: 2px;
+  letter-spacing: 0.4rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.OrderBtn:hover {
+  background-color: rgb(187, 28, 0);
 }
 
 .CityLineImg {
-    width: 100%;
-    position: absolute;
-    top: 200px;
-    left: 50%;
-    transform: translateX(-50%);
+  width: 100%;
+  position: absolute;
+  bottom: -1%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.Pizza {
+  position: absolute;
+  height: 200px;
+  bottom: 500px;
+  right: 20%;
+}
+
+@media (max-width: 500px) {
+  .Container {
+    height: 70vh;
+  }
+  .CityLineTitle {
+    font-size: 4.5rem;
+  }
+  .Pizza {
+    height: 100px;
+    bottom: 200px;
+  }
 }
