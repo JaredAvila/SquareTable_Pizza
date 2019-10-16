@@ -77,7 +77,7 @@ class Landing extends Component {
             src={Pizza}
             className={styles.Pizza}
             alt="Pizza Logo"
-            data-lax-translate-y="0 0, 900 -600"
+            data-lax-translate-y="0 0, 700 -600"
             ref={this.cityRef}
           />
         </div>

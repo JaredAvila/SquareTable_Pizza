@@ -3,7 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import * as styles from "./Footer.module.css";
 
+import { NavLink } from "react-router-dom";
 import Logo from "../Logo/Logo";
+
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
@@ -29,17 +31,29 @@ const Footer = () => {
           <div className={styles.Menu}>
             <h4>Menu</h4>
             <ul>
-              <li>Specialty Pizza</li>
-              <li>Create Your Own Pizza</li>
-              <li>Sides</li>
-              <li>Dipping Sauces</li>
+              <li>
+                <NavLink to="/builder">Specialty Pizza</NavLink>
+              </li>
+              <li>
+                <NavLink to="/builder">Create Your Own Pizza</NavLink>
+              </li>
+              <li>
+                <NavLink to="/builder">Sides</NavLink>
+              </li>
+              <li>
+                <NavLink to="/builder">Dipping Sauces</NavLink>
+              </li>
             </ul>
           </div>
           <div className={styles.Account}>
             <h4>My Account</h4>
             <ul>
-              <li>Create Account</li>
-              <li>Sign In</li>
+              <li>
+                <NavLink to="/auth">Create Account</NavLink>
+              </li>
+              <li>
+                <NavLink to="/auth">Sign In</NavLink>
+              </li>
             </ul>
           </div>
         </div>
@@ -48,9 +62,15 @@ const Footer = () => {
         <hr />
         <div className={styles.Apps}>
           <ul>
-            <li>Pivacy Policy |</li>
-            <li>Terms Of Use |</li>
-            <li>Tracking Tags</li>
+            <li>
+              <a href="/">Pivacy Policy</a> |
+            </li>
+            <li>
+              <a href="/">Terms Of Use</a> |
+            </li>
+            <li>
+              <a href="/">Tracking Tags</a>
+            </li>
           </ul>
           <div>
             <h5>GET OUR MOBILE APP:</h5>
@@ -58,11 +78,17 @@ const Footer = () => {
             <FontAwesomeIcon className={styles.Icon} icon={faAndroid} />
           </div>
         </div>
-
         <hr />
       </div>
 
-      <div></div>
+      <div className={styles.MySite}>
+        <p>
+          Copyright {new Date().getFullYear()} |{" "}
+          <a className={styles.SiteLink} href="https://www.jaredavila.com">
+            Jared Avila Designs
+          </a>
+        </p>
+      </div>
     </footer>
   );
 };
