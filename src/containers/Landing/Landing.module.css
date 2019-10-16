@@ -5,6 +5,7 @@
 
 .Container {
   background: linear-gradient(rgb(0, 0, 41), rgb(102, 45, 23));
+  background-attachment: fixed;
   height: 100vh;
   position: relative;
 }
@@ -18,15 +19,20 @@
   letter-spacing: 0.3rem;
   font-weight: normal;
   position: absolute;
-  top: 70%;
+  top: 60%;
   z-index: 20;
+}
+
+.OrderBtnContainer {
+  width: 100%;
+  display: flex;
+  height: fit-content;
+  justify-content: center;
 }
 
 .OrderBtn {
   position: absolute;
-  top: 90%;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 150%;
   color: white;
   z-index: 20;
   text-decoration: none;
@@ -46,28 +52,39 @@
 .CityLineImg {
   width: 100%;
   position: absolute;
-  bottom: -1%;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: -15%;
   z-index: 10;
 }
 
 .Pizza {
   position: absolute;
   height: 200px;
-  bottom: 500px;
-  right: 20%;
+  bottom: 70px;
+  right: 15%;
 }
 
 @media (max-width: 500px) {
   .Container {
     height: 70vh;
   }
+
   .CityLineTitle {
     font-size: 4.5rem;
+    top: 50%;
   }
+
+  .OrderBtn {
+    padding: 13px 20px;
+    font-size: 1.2rem;
+    top: 180%;
+  }
+
+  .CityLineImg {
+    bottom: -1%;
+  }
+
   .Pizza {
-    height: 100px;
-    bottom: 200px;
+    height: 70px;
+    bottom: 40px;
   }
 }
