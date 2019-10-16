@@ -7,6 +7,7 @@ import CityLine from "../../assets/FrontPage/skyline.png";
 import Pizza from "../../assets/FrontPage/Pizza.png";
 import Specialty from "../../assets/FrontPage/signature.png";
 import Create from "../../assets/FrontPage/create.png";
+import Footer from "../../components/Footer/Footer";
 
 class Landing extends Component {
   constructor(props) {
@@ -104,10 +105,7 @@ class Landing extends Component {
             <h2>Create Your Own Pizza</h2>
           </NavLink>
         </div>
-        {/* <div className={styles.OrderPizzaContainer}>
-          
-          
-        </div> */}
+        <Footer />
       </div>
     );
   }

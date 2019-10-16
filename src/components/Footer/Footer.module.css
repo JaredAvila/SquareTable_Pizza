@@ -1,0 +1,68 @@
+.Footer {
+  width: 100%;
+  color: white;
+  background-color: rgb(32, 32, 32);
+  padding: 40px 0;
+}
+
+.FooterTop {
+  width: 75%;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Menu h4,
+.Account h4 {
+  list-style: none;
+  margin-bottom: 15px;
+  font-size: 1.6rem;
+}
+
+.Menu ul,
+.Account ul {
+  list-style: none;
+  margin: 5px 0;
+  font-size: 1.4rem;
+}
+
+.Menu li,
+.Account li {
+  padding: 5px 0;
+}
+
+.LogoContainer {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.Logo {
+  position: relative;
+  height: 150px;
+}
+
+.Logo h1 {
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  color: rgb(255, 228, 228);
+  font-weight: normal;
+  font-family: "Dosis", sans-serif;
+  letter-spacing: 0.3rem;
+}
+
+.SocialLinks {
+  font-size: 3rem;
+}
+
+.SocialLinks > * {
+  margin: 0 10px;
+  cursor: pointer;
+  color: rgb(223, 0, 0);
+  transition: color 250ms ease;
+}
+
+.SocialLinks > *:hover {
+  color: white;
+}

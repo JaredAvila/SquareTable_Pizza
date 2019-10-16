@@ -1,6 +1,6 @@
 .Landing {
   background-color: black;
-  height: 3000px;
+  height: fit-content;
   overflow: hidden;
 }
 
