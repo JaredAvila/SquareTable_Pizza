@@ -5,11 +5,27 @@
   padding: 40px 0;
 }
 
-.FooterTop {
+.Footer > * {
+  margin: 20px 0;
   width: 75%;
   margin: auto;
+}
+
+.FooterTop {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+}
+
+.Sub {
+  display: flex;
+}
+
+.Sub > * {
+  margin-right: 40px;
+}
+
+.SocialLinks {
+  margin-top: 15px;
 }
 
 .Menu h4,
@@ -52,17 +68,41 @@
   letter-spacing: 0.3rem;
 }
 
-.SocialLinks {
-  font-size: 3rem;
+.AppsContainer {
+  padding: 40px 0;
 }
 
-.SocialLinks > * {
+.Apps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.Apps div {
+  display: flex;
+  align-items: center;
+}
+
+.Apps ul li {
+  display: inline-block;
+  margin-right: 3px;
+  font-size: 1.2rem;
+}
+
+.Apps h5 {
+  font-size: 1.6rem;
+  margin-right: 10px;
+}
+
+.Icon {
+  font-size: 3rem;
   margin: 0 10px;
   cursor: pointer;
   color: rgb(223, 0, 0);
   transition: color 250ms ease;
 }
 
-.SocialLinks > *:hover {
+.Icon:hover {
   color: white;
 }
