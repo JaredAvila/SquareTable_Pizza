@@ -20,10 +20,25 @@
 
 .Logo {
   height: 85%;
+  position: relative;
+  text-align: center;
+}
+
+.Logo h1 {
+  position: absolute;
+  top: 3px;
+  left: 60px;
+  color: rgb(255, 228, 228);
+  font-weight: normal;
+  font-family: "Dosis", sans-serif;
+  letter-spacing: 0.3rem;
 }
 
 @media (max-width: 499px) {
   .DesktopOnly {
     display: none;
+  }
+  .Logo h1 {
+    left: -130px;
   }
 }
