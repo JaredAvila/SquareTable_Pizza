@@ -6,8 +6,8 @@ import asyncComponent from "./hoc/asyncComponent/asyncComonent";
 import * as actions from "./store/actions/";
 
 import Layout from "./hoc/Layout/Layout";
-import PizzaBuilder from "./containers/PizzaBuilder/PizzaBuilder";
 import Logout from "./containers/Auth/Logout/Logout";
+import Landing from "./containers/Landing/Landing";
 
 const asyncShoppingCart = asyncComponent(() => {
   return import("./containers/ShoppingCart/ShoppingCart");
@@ -18,6 +18,9 @@ const asyncOrders = asyncComponent(() => {
 const asyncAuth = asyncComponent(() => {
   return import("./containers/Auth/Auth");
 });
+const asyncBuilder = asyncComponent(() => {
+  return import("./containers/PizzaBuilder/PizzaBuilder");
+});
 
 class App extends Component {
   componentDidMount() {
@@ -27,7 +30,8 @@ class App extends Component {
     let routes = (
       <Switch>
         <Route path="/auth" component={asyncAuth} />
-        <Route path="/" component={PizzaBuilder} />
+        <Route path="/builder" component={asyncBuilder} />
+        <Route path="/" component={Landing} />
       </Switch>
     );
 
@@ -37,8 +41,9 @@ class App extends Component {
           <Route path="/auth" component={asyncAuth} />
           <Route path="/cart" component={asyncShoppingCart} />
           <Route path="/orders" component={asyncOrders} />
+          <Route path="/builder" component={asyncBuilder} />
           <Route path="/logout" component={Logout} />
-          <Route path="/" component={PizzaBuilder} />
+          <Route path="/" component={Landing} />
         </Switch>
       );
     }

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import * as styles from "./Layout.module.css";
 import { connect } from "react-redux";
 
 import Aux from "../AuxComponent/AuxComponent";
@@ -33,7 +32,7 @@ class Layout extends Component {
           close={this.sideDrawerCloseHandler}
           isAuth={this.props.isAuthenticated}
         />
-        <main className={styles.Content}>{this.props.children}</main>
+        <main>{this.props.children}</main>
       </Aux>
     );
   }

@@ -1,0 +1,31 @@
+.Landing {
+    background-color: black;
+    height: 10000px;
+}
+
+.Container {
+    background: linear-gradient(rgb(0, 0, 34), rgb(95, 51, 33));
+    height: 100vh;
+    position: relative;
+}
+
+.CityLineTitle {
+    font-family: 'Dosis', sans-serif;
+    color: white;
+    font-size: 5rem;
+    letter-spacing: .3rem;
+    font-weight: normal;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+}
+
+.CityLineImg {
+    width: 100%;
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+}
