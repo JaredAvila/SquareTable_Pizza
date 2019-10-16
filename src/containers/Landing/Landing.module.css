@@ -1,6 +1,7 @@
 .Landing {
   background-color: black;
-  height: 10000px;
+  height: 3000px;
+  overflow: hidden;
 }
 
 .Container {
@@ -8,6 +9,7 @@
   background-attachment: fixed;
   height: 100vh;
   position: relative;
+  margin-bottom: 200px;
 }
 
 .CityLineTitle {
@@ -61,6 +63,55 @@
   height: 200px;
   bottom: 70px;
   right: 15%;
+}
+
+.specialAnch {
+  margin-bottom: 200px;
+}
+
+.createAnch {
+  margin-bottom: 200px;
+}
+
+.Specialty {
+  position: relative;
+  margin-top: 500px;
+  height: 200px;
+}
+
+.Specialty img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.Specialty h2 {
+  position: absolute;
+  top: -40px;
+  left: 200px;
+  color: rgb(255, 194, 194);
+  font-size: 4rem;
+}
+
+.CreateYourOwn {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+}
+
+.CreateYourOwn img {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  height: 400px;
+}
+
+.CreateYourOwn h2 {
+  position: absolute;
+  top: 0;
+  right: 100px;
+  color: rgb(255, 194, 194);
+  font-size: 4rem;
 }
 
 @media (max-width: 500px) {

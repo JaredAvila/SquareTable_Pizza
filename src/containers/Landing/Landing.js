@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import * as styles from "./Landing.module.css";
 import lax from "lax.js";
-import ReactDOM from "react-dom";
 
 import CityLine from "../../assets/FrontPage/skyline.png";
 import Pizza from "../../assets/FrontPage/Pizza.png";
+import Specialty from "../../assets/FrontPage/signature.png";
+import Create from "../../assets/FrontPage/create.png";
 
 class Landing extends Component {
   constructor(props) {
@@ -14,6 +15,8 @@ class Landing extends Component {
     this.cityRef = React.createRef();
     this.titleRef = React.createRef();
     this.orderBtnRef = React.createRef();
+    this.specialRef = React.createRef();
+    this.createRef = React.createRef();
 
     lax.setup();
 
@@ -32,9 +35,13 @@ class Landing extends Component {
     const pizza = this.cityRef.current;
     const title = this.titleRef.current;
     const orderBtn = this.orderBtnRef.current;
+    const specialty = this.specialRef.current;
+    const create = this.createRef.current;
     lax.addElement(pizza);
     lax.addElement(title);
     lax.addElement(orderBtn);
+    lax.addElement(specialty);
+    lax.addElement(create);
   }
 
   render() {
@@ -73,6 +80,34 @@ class Landing extends Component {
             ref={this.cityRef}
           />
         </div>
+        <div id="specialAnch" className={styles.specialAnch}></div>
+        <div
+          ref={this.specialRef}
+          className={styles.Specialty}
+          data-lax-translate-x="0 0, 800 -900"
+          data-lax-anchor="#specialAnch"
+        >
+          <NavLink to="builder">
+            <img src={Specialty} alt="Specialty Pizzas" />
+            <h2>Specialty Pizzas</h2>
+          </NavLink>
+        </div>
+        <div id="createAnch" className={styles.createAnch}></div>
+        <div
+          ref={this.createRef}
+          className={styles.CreateYourOwn}
+          data-lax-translate-x="0 0, 800 900"
+          data-lax-anchor="#createAnch"
+        >
+          <NavLink to="builder">
+            <img src={Create} alt="Create Your Own Pizza" />
+            <h2>Create Your Own Pizza</h2>
+          </NavLink>
+        </div>
+        {/* <div className={styles.OrderPizzaContainer}>
+          
+          
+        </div> */}
       </div>
     );
   }
