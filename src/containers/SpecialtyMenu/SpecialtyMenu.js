@@ -14,13 +14,21 @@ class SpecialtyMenu extends Component {
   }
   render() {
     let output;
-    if (this.props.pizzas) {
+    if (this.props.pizzas && this.props.prices) {
       output = (
         <Aux>
-          <h1>specialty menu</h1>
-          {this.props.pizzas.map(pizza => {
-            return <SpecialtyPizza key={pizza.name} pizzaData={pizza} />;
-          })}
+          <h1 className={styles.Title}>specialty menu</h1>
+          <div className={styles.PizzaContainer}>
+            {this.props.pizzas.map(pizza => {
+              return (
+                <SpecialtyPizza
+                  price={this.props.prices[pizza.name].toFixed(2)}
+                  key={pizza.name}
+                  pizzaData={pizza}
+                />
+              );
+            })}
+          </div>
         </Aux>
       );
     }

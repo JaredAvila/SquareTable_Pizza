@@ -1,7 +1,11 @@
 .SpecialtyPizza {
     color: white;
-    width: fit-content;
-    margin: 100px auto;
+    margin: 20px;
+    border: 1px solid grey;
+    padding: 20px;
+    background-color: rgb(56, 56, 56);
+    text-align: center;
+    border-radius: 2px;
 }
 
 .SpecialtyPizza h1 {
@@ -10,7 +14,13 @@
     padding: 20px 0;
 }
 
+.Price {
+    font-size: 1.4rem;
+    padding: 5px 0;
+}
+
 .Pizza {
     height: 300px;
     width: 300px;
+    margin-bottom: 10px;
 }

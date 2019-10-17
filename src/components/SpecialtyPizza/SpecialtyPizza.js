@@ -8,12 +8,11 @@ const SpecialtyPizza = props => {
   return (
     <div className={styles.SpecialtyPizza}>
       <h1>{props.pizzaData.name}</h1>
-      <div>
-        <div className={styles.Pizza}>
-          <Pizza ingredients={props.pizzaData.ingredients} />
-        </div>
-        <Button buttonType="Red">Order</Button>
+      <div className={styles.Pizza}>
+        <Pizza ingredients={props.pizzaData.ingredients} />
       </div>
+      <p className={styles.Price}>${props.price}</p>
+      <Button buttonType="Red">Order</Button>
     </div>
   );
 };

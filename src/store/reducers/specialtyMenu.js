@@ -4,8 +4,8 @@ import { updateObject } from "../utility";
 const initialState = {
   pizzas: null,
   prices: null,
-  totalPrice: 9.99,
-  currentSize: "medium",
+  totalPrice: null,
+  currentSize: "large",
   error: false,
   loading: false
 };

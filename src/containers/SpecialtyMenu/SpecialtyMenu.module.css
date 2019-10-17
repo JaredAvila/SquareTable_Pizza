@@ -1,3 +1,15 @@
 .SpecialtyMenu {
     padding: 100px;
 }
+
+.Title {
+    color: rgb(255, 117, 117);
+    font-size: 3.5rem;
+    text-transform: capitalize;
+    letter-spacing: .5rem;
+}
+
+.PizzaContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
