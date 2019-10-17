@@ -22,9 +22,10 @@ class SpecialtyMenu extends Component {
             {this.props.pizzas.map(pizza => {
               return (
                 <SpecialtyPizza
-                  price={this.props.prices[pizza.name].toFixed(2)}
+                  price={parseFloat(this.props.prices[pizza.name].toFixed(2))}
                   key={pizza.name}
                   pizzaData={pizza}
+                  name={pizza.name}
                 />
               );
             })}
@@ -36,7 +37,6 @@ class SpecialtyMenu extends Component {
     if (this.props.loading) {
       output = <Spinner />;
     }
-
     return <div className={styles.SpecialtyMenu}>{output}</div>;
   }
 }
@@ -52,7 +52,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onPizzasInit: () => dispatch(actions.fetchSpecialtyPizzas()),
-    onPricesInit: () => dispatch(actions.initPrices())
+    onPricesInit: () => dispatch(actions.initPrices()),
+    onPurchasePizza: () => dispatch(actions.purchaseInit())
   };
 };
 

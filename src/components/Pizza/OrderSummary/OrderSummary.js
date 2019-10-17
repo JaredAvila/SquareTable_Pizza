@@ -14,17 +14,46 @@ const OrderSummary = props => {
       </li>
     );
   });
-  if (props.toppings.length === 0) {
-    markUp = <p className={styles.Type}>A {props.size} cheese pizza</p>;
-  } else {
-    markUp = <p className={styles.Type}>A {props.size} pizza with:</p>;
+  switch (props.toppings.length) {
+    case 0:
+      markUp = <p className={styles.Type}>A {props.size} cheese pizza</p>;
+      break;
+    case 1:
+      if (
+        props.toppings[0] === "bbqchicken" ||
+        props.toppings[0] === "combo" ||
+        props.toppings[0] === "allmeat" ||
+        props.toppings[0] === "veggie" ||
+        props.toppings[0] === "hawaiian"
+      ) {
+        markUp = (
+          <p className={styles.Type}>
+            A {props.size} {props.toppings[0]} pizza
+          </p>
+        );
+      } else {
+        markUp = (
+          <Aux>
+            <p className={styles.Type}>A {props.size} pizza with:</p>
+            <ul className={styles.List}>{toppingSummary}</ul>
+          </Aux>
+        );
+      }
+      break;
+    default:
+      markUp = (
+        <Aux>
+          <p className={styles.Type}>A {props.size} pizza with:</p>
+          <ul className={styles.List}>{toppingSummary}</ul>
+        </Aux>
+      );
+      break;
   }
 
   return (
     <Aux>
       <h3 className={styles.OrderSummary}>Your Order</h3>
       {markUp}
-      <ul className={styles.List}>{toppingSummary}</ul>
       <p className={styles.Checkout}>
         Your total is: <strong>${props.price}</strong>. Continue to chekcout?
       </p>
