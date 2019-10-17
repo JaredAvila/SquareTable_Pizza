@@ -111,7 +111,6 @@
 .CreateYourOwn {
   position: relative;
   height: 700px;
-  overflow: hidden;
 }
 
 .CreateYourOwn img {
@@ -152,5 +151,46 @@
   .Pizza {
     height: 70px;
     bottom: 40px;
+  }
+
+  .Specialty {
+    margin-top: 400px;
+  }
+
+  .Specialty img {
+    left: -80px;
+    height: 200px;
+  }
+
+  .Specialty h2 {
+    left: 100px;
+    font-size: 2.5rem;
+  }
+
+  .CreateMenuBtn {
+    left: 25%;
+  }
+
+  .CreateYourOwn {
+    height: 500px;
+  }
+
+  .CreateYourOwn img {
+    height: 300px;
+    right: 0px;
+  }
+
+  .CreateYourOwn h2 {
+    top: 50px;
+    right: 40px;
+    font-size: 2.5rem;
+  }
+
+  .specialAnch {
+    margin-bottom: 100px;
+  }
+
+  .createAnch {
+    margin-bottom: 100px;
   }
 }
