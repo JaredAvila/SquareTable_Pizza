@@ -4,7 +4,8 @@ import { updateObject } from "../utility";
 const initialState = {
   orders: [],
   loading: false,
-  purchased: false
+  purchased: false,
+  shoppingCart: []
 };
 
 const purchaseInit = (state, action) => {

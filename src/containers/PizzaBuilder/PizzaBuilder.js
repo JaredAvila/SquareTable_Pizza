@@ -80,7 +80,15 @@ class PizzaBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
-    this.props.history.push("/cart");
+    const filteredObj = filterObject(this.props.ings);
+    const toppings = Object.keys(filteredObj).map(topping => topping);
+    const newPizza = {
+      price: this.props.totalPrice,
+      size: this.props.size,
+      toppings
+    };
+    this.props.onAddToCart(newPizza);
+    this.setState({ purchasing: false });
   };
 
   render() {
@@ -156,7 +164,8 @@ const mapDispatchToProps = dispatch => {
     onInitIngredients: () => dispatch(actions.initIngredients()),
     onInitPrices: () => dispatch(actions.initPrices()),
     onResetPriceAndSize: () => dispatch(actions.resetPrice()),
-    onSetAuthRedirectPath: path => dispatch(actions.setAuthRedirectPath(path))
+    onSetAuthRedirectPath: path => dispatch(actions.setAuthRedirectPath(path)),
+    onAddToCart: pizza => dispatch(actions.addToCart(pizza))
   };
 };
 

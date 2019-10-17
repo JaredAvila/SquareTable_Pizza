@@ -10,7 +10,8 @@ export {
   purchasedPizza,
   purchaseInit,
   fetchOrders,
-  clearOrders
+  clearOrders,
+  addToCart
 } from "./order";
 export { auth, logout, setAuthRedirectPath, authCheckState } from "./auth";
 export { fetchSpecialtyPizzas, updateSpecialtyPrice } from "./specialtyMenu";

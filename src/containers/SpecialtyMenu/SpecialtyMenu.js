@@ -27,7 +27,7 @@ class SpecialtyMenu extends Component {
             {this.props.pizzas.map(pizza => {
               return (
                 <SpecialtyPizza
-                  price={this.props.prices[pizza.name].toFixed(2)}
+                  price={parseFloat(this.props.prices[pizza.name].toFixed(2))}
                   key={pizza.name}
                   pizzaData={pizza}
                   name={pizza.name}

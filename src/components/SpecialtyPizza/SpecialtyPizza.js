@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import * as styles from "./SpecialtyPizza.module.css";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/";
 
 import Pizza from "../Pizza/Pizza";
 import Button from "../UI/Button/Button";
@@ -19,6 +21,12 @@ class SpecialtyPizza extends Component {
 
   purchaseContinueHandler = () => {
     this.setState({ purchasing: false });
+    const pizza = {
+      price: this.props.price,
+      size: "large",
+      toppings: [this.props.name]
+    };
+    this.props.onAddToCart(pizza);
   };
 
   purchaseStartHandler = () => {
@@ -64,4 +72,13 @@ class SpecialtyPizza extends Component {
   }
 }
 
-export default SpecialtyPizza;
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddToCart: pizza => dispatch(actions.addToCart(pizza))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(SpecialtyPizza);

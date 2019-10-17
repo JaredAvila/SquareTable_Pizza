@@ -1,6 +1,15 @@
 import * as actionTypes from "./actionTypes";
 import axios from "../../axios-orders";
 
+export const addToCart = pizzaData => {
+  const shoppingCart = JSON.parse(localStorage.getItem("pizzas"));
+  shoppingCart.push(pizzaData);
+  localStorage.setItem("pizzas", JSON.stringify(shoppingCart));
+  return {
+    type: actionTypes.ADD_TO_CART
+  };
+};
+
 export const purchasedPizzaSuccess = (id, orderData) => {
   return {
     type: actionTypes.PURCHASE_PIZZA_SUCCESS,

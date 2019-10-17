@@ -44,6 +44,10 @@ class Landing extends Component {
     lax.addElement(orderBtn);
     lax.addElement(specialty);
     lax.addElement(create);
+    if (!localStorage.getItem("pizzas")) {
+      const pizzas = [];
+      localStorage.setItem("pizzas", JSON.stringify(pizzas));
+    }
   }
 
   render() {
