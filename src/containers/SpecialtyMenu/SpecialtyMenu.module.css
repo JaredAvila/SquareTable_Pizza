@@ -1,5 +1,5 @@
 .SpecialtyMenu {
-    padding: 100px;
+    padding: 100px 0 0 50px;
 }
 
 .Title {
@@ -12,4 +12,18 @@
 .PizzaContainer {
     display: flex;
     flex-wrap: wrap;
+}
+
+@media(max-width: 500px) {
+    .SpecialtyMenu {
+        padding: 100px 0 0 0;
+    }
+    .Title {
+        font-size: 2.5rem;
+        width: fit-content;
+        margin: auto;
+    }
+    .PizzaContainer {
+        justify-content: center;
+    }
 }
