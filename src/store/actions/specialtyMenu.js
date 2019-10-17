@@ -27,7 +27,15 @@ export const fetchSpecialtyPizzas = () => {
     axios
       .get("/specialties.json")
       .then(res => {
-        dispatch(fetchSpecialtyPizzasSuccess(res.data));
+        const names = Object.keys(res.data);
+        const pizzas = [];
+        names.forEach(pizza => {
+          pizzas.push({
+            name: pizza,
+            ingredients: res.data[pizza].ingredients
+          });
+        });
+        dispatch(fetchSpecialtyPizzasSuccess(pizzas));
       })
       .catch(err => {
         dispatch(fetchSpecialtyPizzasFail(err));

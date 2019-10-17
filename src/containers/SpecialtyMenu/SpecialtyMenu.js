@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/";
+import * as styles from "./SpecialtyMenu.module.css";
 
+import Aux from "../../hoc/AuxComponent/AuxComponent";
 import SpecialtyPizza from "../../components/SpecialtyPizza/SpecialtyPizza";
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 class SpecialtyMenu extends Component {
   componentDidMount() {
@@ -10,20 +13,31 @@ class SpecialtyMenu extends Component {
     this.props.onPricesInit();
   }
   render() {
-    console.log(this.props);
-    return (
-      <div>
-        <h1>specialty menu</h1>
-        <SpecialtyPizza />
-      </div>
-    );
+    let output;
+    if (this.props.pizzas) {
+      output = (
+        <Aux>
+          <h1>specialty menu</h1>
+          {this.props.pizzas.map(pizza => {
+            return <SpecialtyPizza key={pizza.name} pizzaData={pizza} />;
+          })}
+        </Aux>
+      );
+    }
+
+    if (this.props.loading) {
+      output = <Spinner />;
+    }
+
+    return <div className={styles.SpecialtyMenu}>{output}</div>;
   }
 }
 
 const mapStateToProps = state => {
   return {
     prices: state.pizzaBuilder.prices,
-    pizzas: state.specialty.pizzas
+    pizzas: state.specialty.pizzas,
+    loading: state.specialty.loading
   };
 };
 
