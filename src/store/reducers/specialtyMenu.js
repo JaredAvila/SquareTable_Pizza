@@ -22,6 +22,10 @@ const fetchSpcialtyPizzasFail = (state, action) => {
   return updateObject(state, { error: action.error, loading: false });
 };
 
+const updateSpecialtyPrice = (state, action) => {
+  return updateObject(state, { totalPrice: parseFloat(action.price) });
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_SPECIALTY_PIZZAS_START:
@@ -30,6 +34,8 @@ const reducer = (state = initialState, action) => {
       return fetchSpcialtyPizzasSuccess(state, action);
     case actionTypes.FETCH_SPECIALTY_PIZZAS_FAIL:
       return fetchSpcialtyPizzasFail(state, action);
+    case actionTypes.UPDATE_SPECIALTY_PRICE:
+      return updateSpecialtyPrice(state, action);
     default:
       return state;
   }

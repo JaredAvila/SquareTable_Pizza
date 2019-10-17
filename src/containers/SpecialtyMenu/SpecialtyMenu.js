@@ -12,6 +12,11 @@ class SpecialtyMenu extends Component {
     this.props.onPizzasInit();
     this.props.onPricesInit();
   }
+
+  updatePriceHandler = price => {
+    this.props.onUpdatePrice(price);
+  };
+
   render() {
     let output;
     if (this.props.pizzas && this.props.prices) {
@@ -22,10 +27,11 @@ class SpecialtyMenu extends Component {
             {this.props.pizzas.map(pizza => {
               return (
                 <SpecialtyPizza
-                  price={parseFloat(this.props.prices[pizza.name].toFixed(2))}
+                  price={this.props.prices[pizza.name].toFixed(2)}
                   key={pizza.name}
                   pizzaData={pizza}
                   name={pizza.name}
+                  updatePrice={this.updatePriceHandler}
                 />
               );
             })}
@@ -53,7 +59,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onPizzasInit: () => dispatch(actions.fetchSpecialtyPizzas()),
     onPricesInit: () => dispatch(actions.initPrices()),
-    onPurchasePizza: () => dispatch(actions.purchaseInit())
+    onPurchasePizza: () => dispatch(actions.purchaseInit()),
+    onUpdatePrice: price => dispatch(actions.updateSpecialtyPrice(price))
   };
 };
 

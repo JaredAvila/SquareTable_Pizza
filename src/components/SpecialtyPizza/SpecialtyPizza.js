@@ -16,13 +16,17 @@ class SpecialtyPizza extends Component {
   purchaseCancelHandler = () => {
     this.setState({ purchasing: false });
   };
-  purchaseContinueHandler = () => {};
+
+  purchaseContinueHandler = () => {
+    this.setState({ purchasing: false });
+  };
+
   purchaseStartHandler = () => {
     this.setState({ purchasing: true });
+    this.props.updatePrice(this.props.price);
   };
 
   render() {
-    console.log(this.props);
     let orderSummary = (
       <OrderSummary
         toppings={[this.props.name]}

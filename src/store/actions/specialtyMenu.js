@@ -21,6 +21,13 @@ export const fetchSpecialtyPizzasFail = error => {
   };
 };
 
+export const updateSpecialtyPrice = price => {
+  return {
+    type: actionTypes.UPDATE_SPECIALTY_PRICE,
+    price
+  };
+};
+
 export const fetchSpecialtyPizzas = () => {
   return dispatch => {
     dispatch(fetchSpecialtyPizzasStart());
