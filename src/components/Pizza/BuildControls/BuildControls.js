@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import BuildControl from "./BuildControl/BuildControl";
+import Button from "../../UI/Button/Button";
 
 import * as styles from "./BuildControls.module.css";
 
@@ -57,9 +58,9 @@ const BuildControls = props => {
           />
         ))}
       </div>
-      <button className={styles.OrderButton} onClick={props.purchase}>
+      <Button buttonType="Yellow" clicked={props.purchase}>
         {props.isAuth ? "ADD TO CART" : "LOGIN TO ORDER"}
-      </button>
+      </Button>
     </div>
   );
 };

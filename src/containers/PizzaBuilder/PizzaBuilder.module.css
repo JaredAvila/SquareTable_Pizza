@@ -1,28 +1,29 @@
 .PizzaContainer {
     height: 600px;
-    width: 600px
+    width: 600px;
+    margin: auto;
 }
 
 .PizzaBuilderContainer {
     display: flex;
+    flex-wrap: wrap;
+    padding-top: 100px;
 }
 
-@media(max-width: 942px) {
-    .PizzaBuilderContainer {
-        flex-wrap: wrap;
-    }
-}
-
-@media(min-width: 500px) {
+@media(max-width: 1400px) {
     .PizzaContainer {
         width: 500px;
         height: 500px;
+        margin-bottom: 30px;
     }
 }
 
-@media(min-width: 1400px) {
+@media(max-width: 500px) {
     .PizzaContainer {
-        width: 600px;
-        height: 600px;
+        width: 300px;
+        height: 300px;
+    }
+    .PizzaBuilderContainer {
+        padding-top: 70px;
     }
 }

@@ -13,4 +13,5 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: inherit;
+  background-color: rgb(19, 19, 19);
 }

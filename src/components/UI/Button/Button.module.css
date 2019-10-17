@@ -5,26 +5,63 @@
     outline: none;
     cursor: pointer;
     font: inherit;
-    padding: 10px;
-    margin: 10px;
-    font-weight: bold;
-    font-size: 1.6rem;
+    padding: 15px 25px;
+    font-size: 1.4rem;
+    border-radius: 2px;
 }
 
-.Button:first-of-type {
-    margin-left: 0;
-    padding-left: 0;
+.Red:hover {
+    background-color: rgb(187, 28, 0);
+}
+
+.Red {
+    background-color: rgb(160, 24, 0);
+    letter-spacing: 0.4rem;
 }
 
 .Success {
     color: #5C9210;
+    padding: 10px;
 }
 
 .Danger {
     color: #944317;
+    padding: 10px;
 }
 
 .Button:disabled {
     color: #ccc;
     cursor: not-allowed;
+}
+
+.Yellow {
+    background-color: #DAD735;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #6b6b6b;
+    color: #414141;
+    font-family: inherit;
+    font-size: 1.2em;
+    padding: 15px 30px;
+    box-shadow: 2px 2px 2px #5f5f5f;
+    transition: all 250ms ease;
+}
+
+.Yellow:hover, .Yellow:active {
+    background-color: rgb(187, 185, 47);
+    border: 1px solid #3f3f3f;
+    color: #292929;
+    animation: enable 0.3s linear;
+}
+
+@keyframes enable {
+    0% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

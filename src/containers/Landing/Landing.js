@@ -8,6 +8,7 @@ import Pizza from "../../assets/FrontPage/Pizza.png";
 import Specialty from "../../assets/FrontPage/signature.png";
 import Create from "../../assets/FrontPage/create.png";
 import Footer from "../../components/Footer/Footer";
+import Button from "../../components/UI/Button/Button";
 
 class Landing extends Component {
   constructor(props) {
@@ -46,9 +47,6 @@ class Landing extends Component {
   }
 
   render() {
-    const orderNowClasses = [styles.OrderBtn, styles.Btn];
-    const specialtyMenuBtnClasses = [styles.SpecialtyMenuBtn, styles.Btn];
-    const createMenuBtnClasses = [styles.CreateMenuBtn, styles.Btn];
     return (
       <div className={styles.Landing}>
         <div className={styles.Container}>
@@ -62,12 +60,12 @@ class Landing extends Component {
           <div className={styles.OrderBtnContainer}>
             <NavLink
               to="/specialty"
-              className={orderNowClasses.join(" ")}
+              className={styles.OrderBtn}
               data-lax-translate-y="0 0, 500 -200"
               ref={this.orderBtnRef}
               data-lax-opacity="0 0, 500 1"
             >
-              ORDER NOW
+              <Button buttonType="Red">ORDER NOW</Button>
             </NavLink>
           </div>
 
@@ -93,11 +91,8 @@ class Landing extends Component {
         >
           <img src={Specialty} alt="Specialty Pizzas" />
           <h2>Specialty Pizzas</h2>
-          <NavLink
-            className={specialtyMenuBtnClasses.join(" ")}
-            to="/specialty"
-          >
-            View Menu
+          <NavLink className={styles.SpecialtyMenuBtn} to="/specialty">
+            <Button buttonType="Red">View Menu</Button>
           </NavLink>
         </div>
         <div id="createAnch" className={styles.createAnch}></div>
@@ -109,8 +104,8 @@ class Landing extends Component {
         >
           <img src={Create} alt="Create Your Own Pizza" />
           <h2>Create Your Own Pizza</h2>
-          <NavLink to="/builder" className={createMenuBtnClasses.join(" ")}>
-            Start Building
+          <NavLink to="/builder" className={styles.CreateMenuBtn}>
+            <Button buttonType="Red">Start Building</Button>
           </NavLink>
         </div>
         <Footer />

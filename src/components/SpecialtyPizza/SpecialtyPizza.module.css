@@ -1,3 +1,15 @@
+.SpecialtyPizza {
+    color: white;
+    width: fit-content;
+    margin: 100px auto;
+}
+
+.SpecialtyPizza h1 {
+    text-transform: capitalize;
+    letter-spacing: .5rem;
+    padding: 20px 0;
+}
+
 .Pizza {
     height: 300px;
     width: 300px;
