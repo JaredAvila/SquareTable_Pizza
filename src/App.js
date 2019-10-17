@@ -21,6 +21,9 @@ const asyncAuth = asyncComponent(() => {
 const asyncBuilder = asyncComponent(() => {
   return import("./containers/PizzaBuilder/PizzaBuilder");
 });
+const asyncSpecialty = asyncComponent(() => {
+  return import("./containers/SpecialtyMenu/SpecialtyMenu");
+});
 
 class App extends Component {
   componentDidMount() {
@@ -31,6 +34,7 @@ class App extends Component {
       <Switch>
         <Route path="/auth" component={asyncAuth} />
         <Route path="/builder" component={asyncBuilder} />
+        <Route path="/specialty" component={asyncSpecialty} />
         <Route path="/" component={Landing} />
       </Switch>
     );
@@ -42,6 +46,7 @@ class App extends Component {
           <Route path="/cart" component={asyncShoppingCart} />
           <Route path="/orders" component={asyncOrders} />
           <Route path="/builder" component={asyncBuilder} />
+          <Route path="/specialty" component={asyncSpecialty} />
           <Route path="/logout" component={Logout} />
           <Route path="/" component={Landing} />
         </Switch>

@@ -61,7 +61,7 @@ class Landing extends Component {
           </h1>
           <div className={styles.OrderBtnContainer}>
             <NavLink
-              to="/builder"
+              to="/specialty"
               className={orderNowClasses.join(" ")}
               data-lax-translate-y="0 0, 500 -200"
               ref={this.orderBtnRef}
@@ -93,7 +93,10 @@ class Landing extends Component {
         >
           <img src={Specialty} alt="Specialty Pizzas" />
           <h2>Specialty Pizzas</h2>
-          <NavLink className={specialtyMenuBtnClasses.join(" ")} to="builder">
+          <NavLink
+            className={specialtyMenuBtnClasses.join(" ")}
+            to="/specialty"
+          >
             View Menu
           </NavLink>
         </div>
@@ -106,7 +109,7 @@ class Landing extends Component {
         >
           <img src={Create} alt="Create Your Own Pizza" />
           <h2>Create Your Own Pizza</h2>
-          <NavLink to="builder" className={createMenuBtnClasses.join(" ")}>
+          <NavLink to="/builder" className={createMenuBtnClasses.join(" ")}>
             Start Building
           </NavLink>
         </div>

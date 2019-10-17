@@ -13,3 +13,4 @@ export {
   clearOrders
 } from "./order";
 export { auth, logout, setAuthRedirectPath, authCheckState } from "./auth";
+export { fetchSpecialtyPizzas } from "./specialtyMenu";
