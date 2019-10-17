@@ -46,6 +46,9 @@ class Landing extends Component {
   }
 
   render() {
+    const orderNowClasses = [styles.OrderBtn, styles.Btn];
+    const specialtyMenuBtnClasses = [styles.SpecialtyMenuBtn, styles.Btn];
+    const createMenuBtnClasses = [styles.CreateMenuBtn, styles.Btn];
     return (
       <div className={styles.Landing}>
         <div className={styles.Container}>
@@ -59,7 +62,7 @@ class Landing extends Component {
           <div className={styles.OrderBtnContainer}>
             <NavLink
               to="/builder"
-              className={styles.OrderBtn}
+              className={orderNowClasses.join(" ")}
               data-lax-translate-y="0 0, 500 -200"
               ref={this.orderBtnRef}
               data-lax-opacity="0 0, 500 1"
@@ -85,24 +88,26 @@ class Landing extends Component {
         <div
           ref={this.specialRef}
           className={styles.Specialty}
-          data-lax-translate-x="0 0, 800 -900"
+          data-lax-translate-x="0 0, 900 -900"
           data-lax-anchor="#specialAnch"
         >
-          <NavLink to="builder">
-            <img src={Specialty} alt="Specialty Pizzas" />
-            <h2>Specialty Pizzas</h2>
+          <img src={Specialty} alt="Specialty Pizzas" />
+          <h2>Specialty Pizzas</h2>
+          <NavLink className={specialtyMenuBtnClasses.join(" ")} to="builder">
+            View Menu
           </NavLink>
         </div>
         <div id="createAnch" className={styles.createAnch}></div>
         <div
           ref={this.createRef}
           className={styles.CreateYourOwn}
-          data-lax-translate-x="0 0, 800 900"
+          data-lax-translate-x="0 0, 900 900"
           data-lax-anchor="#createAnch"
         >
-          <NavLink to="builder">
-            <img src={Create} alt="Create Your Own Pizza" />
-            <h2>Create Your Own Pizza</h2>
+          <img src={Create} alt="Create Your Own Pizza" />
+          <h2>Create Your Own Pizza</h2>
+          <NavLink to="builder" className={createMenuBtnClasses.join(" ")}>
+            Start Building
           </NavLink>
         </div>
         <Footer />

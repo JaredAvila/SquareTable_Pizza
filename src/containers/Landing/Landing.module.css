@@ -4,6 +4,22 @@
   overflow: hidden;
 }
 
+.Btn {
+  text-decoration: none;
+  background-color: rgb(160, 24, 0);
+  padding: 15px 25px;
+  font-size: 1.4rem;
+  border-radius: 2px;
+  letter-spacing: 0.4rem;
+  cursor: pointer;
+  outline: none;
+  color: white;
+}
+
+.Btn:hover {
+  background-color: rgb(187, 28, 0);
+}
+
 .Container {
   background: linear-gradient(rgb(0, 0, 41), rgb(102, 45, 23));
   background-attachment: fixed;
@@ -35,20 +51,7 @@
 .OrderBtn {
   position: absolute;
   top: 150%;
-  color: white;
   z-index: 20;
-  text-decoration: none;
-  background-color: rgb(160, 24, 0);
-  padding: 15px 25px;
-  font-size: 1.4rem;
-  border-radius: 2px;
-  letter-spacing: 0.4rem;
-  cursor: pointer;
-  outline: none;
-}
-
-.OrderBtn:hover {
-  background-color: rgb(187, 28, 0);
 }
 
 .CityLineImg {
@@ -93,9 +96,21 @@
   font-size: 4rem;
 }
 
+.SpecialtyMenuBtn {
+  position: absolute;
+  top: 150px;
+  right: 25%;
+}
+
+.CreateMenuBtn {
+  position: absolute;
+  top: 300px;
+  left: 35%;
+}
+
 .CreateYourOwn {
   position: relative;
-  height: 500px;
+  height: 700px;
   overflow: hidden;
 }
 
@@ -103,7 +118,7 @@
   position: absolute;
   top: 50px;
   right: 50px;
-  height: 400px;
+  height: 600px;
 }
 
 .CreateYourOwn h2 {
