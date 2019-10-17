@@ -98,7 +98,6 @@ class PizzaBuilder extends Component {
           <div className={styles.PizzaContainer}>
             <Pizza ingredients={this.props.ings} />
           </div>
-
           <BuildControls
             ingredientAdded={this.addIngredientHandler}
             sizeChanged={this.sizeSelectHandler}
@@ -131,6 +130,7 @@ class PizzaBuilder extends Component {
         >
           {orderSummary}
         </Modal>
+        <h1 className={styles.Title}>Create Your Own Pizza</h1>
         {pizza}
       </Aux>
     );

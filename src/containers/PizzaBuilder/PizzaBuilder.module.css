@@ -4,10 +4,18 @@
     margin: auto;
 }
 
+.Title {
+    padding-top: 100px;
+    color: rgb(255, 117, 117);
+    width: fit-content;
+    margin: auto;
+    letter-spacing: .5rem;
+}
+
 .PizzaBuilderContainer {
     display: flex;
     flex-wrap: wrap;
-    padding-top: 100px;
+    padding-top: 50px;
 }
 
 @media(max-width: 1400px) {
@@ -23,7 +31,7 @@
         width: 300px;
         height: 300px;
     }
-    .PizzaBuilderContainer {
+    .Title {
         padding-top: 70px;
     }
 }
