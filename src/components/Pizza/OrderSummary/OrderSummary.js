@@ -9,7 +9,8 @@ const OrderSummary = props => {
   const pizza = [
     {
       toppings: props.toppings,
-      size: props.size
+      size: props.size,
+      price: props.price
     }
   ];
   const markUp = displayOrder(pizza);
@@ -18,9 +19,6 @@ const OrderSummary = props => {
     <div className={styles.OrderSummary}>
       <h3 className={styles.OrderSummaryTitle}>Your Order</h3>
       {markUp}
-      <p className={styles.Checkout}>
-        Your total is: <strong>${props.price}</strong>.
-      </p>
       <Button buttonType="Danger" clicked={props.purchaseCancelled}>
         CANCEL
       </Button>

@@ -9,9 +9,31 @@
 
 .ShoppingCart li {
     margin-left: 10px;
+    padding-bottom: 5px;
+    color: rgb(243, 149, 149);
 }
 
 .ShoppingCart p {
     font-size: 1.6rem;
     margin-bottom: 10px;
+}
+
+.ShoppingCart span {
+    margin-top: 10px;
+    font-size: 1.4rem;
+}
+
+.ShoppingCart strong {
+    color: rgb(142, 238, 142);
+}
+
+.ShoppingCart article {
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 2px;
+    background-color: rgb(71, 71, 71);
 }

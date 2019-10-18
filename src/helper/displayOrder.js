@@ -1,16 +1,20 @@
 import React from "react";
-import Aux from "../hoc/AuxComponent/AuxComponent";
+import Button from "../components/UI/Button/Button";
 
 export const displayOrder = pizzas => {
   return pizzas.map(pizza => {
     let rando = Math.random() * (7000 - 1) + 1;
     const toppingSummary = pizza.toppings.map(top => {
-      return <li key={top}>{top}</li>;
+      return (
+        <li style={{ textTransform: "capitalize" }} key={top}>
+          {top}
+        </li>
+      );
     });
     let name;
     switch (pizza.toppings.length) {
       case 0:
-        name = <p>A {pizza.size} cheese pizza</p>;
+        name = <p>A {pizza.size} Cheese pizza</p>;
         break;
       case 1:
         if (
@@ -21,28 +25,37 @@ export const displayOrder = pizzas => {
           pizza.toppings[0] === "hawaiian"
         ) {
           name = (
-            <p>
+            <p style={{ textTransform: "capitalize" }}>
               A {pizza.size} {pizza.toppings[0]} pizza
             </p>
           );
         } else {
           name = (
-            <Aux>
+            <div>
               <p>A {pizza.size} pizza with:</p>
               <ul>{toppingSummary}</ul>
-            </Aux>
+            </div>
           );
         }
         break;
       default:
         name = (
-          <Aux>
+          <div>
             <p>A {pizza.size} pizza with:</p>
             <ul>{toppingSummary}</ul>
-          </Aux>
+          </div>
         );
         break;
     }
-    return <Aux key={rando}>{name}</Aux>;
+    return (
+      <article key={rando}>
+        {name}{" "}
+        <p>
+          <span>
+            Price: <strong>${pizza.price}</strong>
+          </span>
+        </p>
+      </article>
+    );
   });
 };

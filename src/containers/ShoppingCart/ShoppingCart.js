@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-// import { Route, Redirect } from "react-router-dom";
 import * as actions from "../../store/actions/";
 import * as styles from "./ShoppingCart.module.css";
 import { displayOrder } from "../../helper/displayOrder";
 
 import { connect } from "react-redux";
 
-// import CheckoutSummary from "../../components/Order/CheckoutSummary/CheckoutSummary";
-// import ContactData from "./ContactData/ContactData";
+import Button from "../../components/UI/Button/Button";
 
 class ShoppingCart extends Component {
   state = {
@@ -40,7 +38,12 @@ class ShoppingCart extends Component {
     return (
       <div className={styles.ShoppingCart}>
         {markup}
-        <button onClick={this.clearCartHandler}>Clear Cart</button>
+        <Button clicked={this.clearCartHandler} buttonType="Danger">
+          CLEAR SHOPPING CART
+        </Button>
+        <Button clicked={this.checkoutCancelledHandler} buttonType="Primary">
+          CHEKCOUT
+        </Button>
       </div>
     );
   }
