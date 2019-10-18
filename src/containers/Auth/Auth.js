@@ -51,9 +51,15 @@ class Auth extends Component {
   };
 
   componentDidMount() {
-    if (!this.props.building && this.props.authRedirectPath !== "/") {
-      this.props.onSetAuthRedirectPath();
+    if (this.props.history.location.state) {
+      if (
+        !this.props.history.location.state.building &&
+        this.props.authRedirectPath !== "/"
+      ) {
+        this.props.onSetAuthRedirectPath();
+      }
     }
+    console.log(this.props);
   }
 
   inputChangedHandler = (event, controlName) => {

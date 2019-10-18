@@ -12,7 +12,9 @@ import Aux from "../../hoc/AuxComponent/AuxComponent";
 class ShoppingCart extends Component {
   state = {
     pizzas: null,
-    ordering: false
+    ordering: false,
+    completed: false,
+    login: false
   };
 
   componentDidMount() {
@@ -22,15 +24,11 @@ class ShoppingCart extends Component {
   }
 
   checkoutContinuedHandler = () => {
-    if (this.props.isAuthenticated) {
-      this.setState({ ordering: true });
-    } else {
-      this.props.history.goBack();
-    }
+    this.setState({ ordering: true });
   };
 
   checkoutCancelledHandler = () => {
-    this.setState({ ordering: false });
+    this.setState({ ordering: false, completed: false, login: false });
   };
 
   clearCartHandler = () => {
@@ -56,7 +54,16 @@ class ShoppingCart extends Component {
       userId: localStorage.getItem("userId")
     };
     this.props.onPurchase(order);
+    this.setState({ ordering: false, completed: true });
+  };
+  orderFinishedHandler = () => {
+    this.clearCartHandler();
     this.props.history.push("/");
+  };
+
+  loginHandler = () => {
+    this.props.onSetAuthRedirectPath("/cart");
+    this.props.history.push("/auth", { building: true });
   };
 
   render() {
@@ -69,19 +76,49 @@ class ShoppingCart extends Component {
       markup = <h3>No orders in your shopping cart</h3>;
     }
 
+    let orderCheckout = (
+      <div>
+        <p className={styles.FinalTotal}>Your total is: ${totalPrice}</p>
+        <Button clicked={this.loginHandler} buttonType="Primary">
+          LOGIN
+        </Button>
+        <Button clicked={this.checkoutCancelledHandler} buttonType="Success">
+          CONTINUE AS GUEST
+        </Button>
+      </div>
+    );
+    if (this.props.isAuthenticated) {
+      orderCheckout = (
+        <div>
+          <p className={styles.FinalTotal}>Your total is: ${totalPrice}</p>
+          <Button clicked={this.placeOrderHandler} buttonType="Primary">
+            PLACE ORDER
+          </Button>
+          <Button clicked={this.checkoutCancelledHandler} buttonType="Danger">
+            CANCEL
+          </Button>
+        </div>
+      );
+    }
+
     return (
       <Aux>
         <Modal
           show={this.state.ordering}
           modalClosed={this.checkoutCancelledHandler}
         >
+          {orderCheckout}
+        </Modal>
+        <Modal
+          show={this.state.completed}
+          modalClosed={this.checkoutCancelledHandler}
+        >
           <div>
-            <p className={styles.FinalTotal}>Your total is: ${totalPrice}</p>
-            <Button clicked={this.placeOrderHandler} buttonType="Primary">
-              PLACE ORDER
-            </Button>
-            <Button clicked={this.checkoutCancelledHandler} buttonType="Danger">
-              CANCEL
+            <p className={styles.FinalTotal}>
+              Thank you! Your pizza is on its way
+            </p>
+            <Button clicked={this.orderFinishedHandler} buttonType="Primary">
+              HOME
             </Button>
           </div>
         </Modal>
@@ -126,7 +163,8 @@ const mapDispatchToProps = dispatch => {
     onInitPurchase: () => dispatch(actions.purchaseInit()),
     onPurchase: orderData => dispatch(actions.purchasedPizza(orderData)),
     onFetchCart: () => dispatch(actions.getCart()),
-    onClearCart: () => dispatch(actions.clearCart())
+    onClearCart: () => dispatch(actions.clearCart()),
+    onSetAuthRedirectPath: path => dispatch(actions.setAuthRedirectPath(path))
   };
 };
 
