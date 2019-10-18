@@ -10,6 +10,21 @@
     padding: 10px 0;
 }
 
+.ShoppingCart h6 {
+    font-weight: normal;
+    font-size: 2rem;
+}
+
+.ShoppingCart h3 {
+    font-weight: normal;
+    font-size: 2rem;
+    padding: 20px 0;
+}
+
+.ShoppingCart hr {
+    margin-bottom: 10px;
+}
+
 .ShoppingCart ul {
     list-style-type: none;
 }
@@ -43,4 +58,12 @@
     padding: 10px;
     border-radius: 2px;
     background: linear-gradient(170deg, rgb(71, 71, 71), rgb(131, 131, 131));
+}
+
+.FinalTotal {
+    font-size: 2rem;
+    color: white;
+    border-bottom: 4px double white;
+    padding: 5px 0;
+    margin-bottom: 10px;
 }

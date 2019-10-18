@@ -42,11 +42,11 @@ export const purchasedPizzaStart = () => {
   };
 };
 
-export const purchasedPizza = (orderData, token) => {
+export const purchasedPizza = orderData => {
   return dispatch => {
     dispatch(purchasedPizzaStart());
     axios
-      .post("/order.json?auth=" + token, orderData)
+      .post("/order.json?", orderData)
       .then(res => {
         dispatch(purchasedPizzaSuccess(res.data.name, orderData));
       })
