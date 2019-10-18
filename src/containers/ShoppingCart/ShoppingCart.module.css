@@ -3,6 +3,13 @@
     padding: 100px;
 }
 
+.Title {
+    color: rgb(221, 35, 35);
+    font-size: 3rem;
+    letter-spacing: .5rem;
+    padding: 10px 0;
+}
+
 .ShoppingCart ul {
     list-style-type: none;
 }

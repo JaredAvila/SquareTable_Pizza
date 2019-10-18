@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "../components/UI/Button/Button";
 
 export const displayOrder = pizzas => {
   return pizzas.map(pizza => {

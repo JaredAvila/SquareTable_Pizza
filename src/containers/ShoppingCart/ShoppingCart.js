@@ -37,12 +37,13 @@ class ShoppingCart extends Component {
 
     return (
       <div className={styles.ShoppingCart}>
+        <h1 className={styles.Title}>Your order</h1>
         {markup}
         <Button clicked={this.clearCartHandler} buttonType="Danger">
           CLEAR SHOPPING CART
         </Button>
         <Button clicked={this.checkoutCancelledHandler} buttonType="Primary">
-          CHEKCOUT
+          CHECKOUT
         </Button>
       </div>
     );
