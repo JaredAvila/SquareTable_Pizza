@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import * as actions from "../../store/actions/";
 import * as styles from "./SpecialtyMenu.module.css";
 
 import Aux from "../../hoc/AuxComponent/AuxComponent";
 import SpecialtyPizza from "../../components/SpecialtyPizza/SpecialtyPizza";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import Button from "../../components/UI/Button/Button";
 
 class SpecialtyMenu extends Component {
   componentDidMount() {
@@ -17,12 +19,22 @@ class SpecialtyMenu extends Component {
     this.props.onUpdatePrice(price);
   };
 
+  onCreateHandler = () => {
+    this.props.history.push("/builder");
+  };
+
   render() {
     let output;
     if (this.props.pizzas && this.props.prices) {
       output = (
         <Aux>
-          <h1 className={styles.Title}>specialty menu</h1>
+          <div className={styles.TopMenu}>
+            <h1 className={styles.Title}>specialty menu</h1>
+            <Button buttonType="Yellow" clicked={this.onCreateHandler}>
+              Create Your Own
+            </Button>
+          </div>
+
           <div className={styles.PizzaContainer}>
             {this.props.pizzas.map(pizza => {
               return (
@@ -67,4 +79,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SpecialtyMenu);
+)(withRouter(SpecialtyMenu));

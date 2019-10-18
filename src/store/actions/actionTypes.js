@@ -29,3 +29,4 @@ export const FETCH_SPECIALTY_PIZZAS_FAIL = "FETCH_SPECIALTY_PIZZAS_FAIL";
 
 export const ADD_TO_CART = "ADD_TO_CART";
 export const GET_CART = "GET_CART";
+export const CLEAR_CART = "CLEAR_CART";

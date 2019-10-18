@@ -2,8 +2,13 @@ import * as actionTypes from "./actionTypes";
 import axios from "../../axios-orders";
 
 export const addToCart = pizzaData => {
-  const shoppingCart = JSON.parse(localStorage.getItem("pizzas"));
-  shoppingCart.push(pizzaData);
+  let shoppingCart = [];
+  if (!localStorage.getItem("pizzas")) {
+    shoppingCart.push(pizzaData);
+  } else {
+    shoppingCart = JSON.parse(localStorage.getItem("pizzas"));
+    shoppingCart.push(pizzaData);
+  }
   localStorage.setItem("pizzas", JSON.stringify(shoppingCart));
   return {
     type: actionTypes.ADD_TO_CART

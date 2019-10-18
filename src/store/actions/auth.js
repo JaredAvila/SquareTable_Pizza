@@ -12,10 +12,16 @@ export const checkAuthTimeout = expirationTime => {
 export const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("expirationTime");
-  localStorage.removeItem("pizzas");
   localStorage.removeItem("userId");
   return {
     type: actionTypes.AUTH_LOGOUT
+  };
+};
+
+export const clearCart = () => {
+  localStorage.removeItem("pizzas");
+  return {
+    type: actionTypes.CLEAR_CART
   };
 };
 

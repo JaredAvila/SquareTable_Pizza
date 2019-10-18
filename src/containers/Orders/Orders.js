@@ -21,7 +21,7 @@ class Orders extends Component {
     if (!this.props.loading) {
       orders = (
         <div style={{ padding: "100px" }}>
-          {/* {this.props.orders.map(order => {
+          {this.props.orders.map(order => {
             return (
               <Order
                 key={order.id}
@@ -29,8 +29,7 @@ class Orders extends Component {
                 customer={order.customerData}
               />
             );
-          })} */}
-          <button onClick={this.getCartHandler}>Get Cart</button>
+          })}
         </div>
       );
     }
@@ -50,8 +49,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onFetchOrders: (token, userId) =>
-      dispatch(actions.fetchOrders(token, userId)),
-    onGetCart: () => dispatch(actions.getCart())
+      dispatch(actions.fetchOrders(token, userId))
   };
 };
 

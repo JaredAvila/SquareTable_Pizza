@@ -24,6 +24,11 @@
     padding: 10px;
 }
 
+.Primary {
+    color: rgb(16, 72, 146);
+    padding: 10px;
+}
+
 .Danger {
     color: #944317;
     padding: 10px;

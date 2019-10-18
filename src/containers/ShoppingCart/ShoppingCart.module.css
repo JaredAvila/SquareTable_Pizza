@@ -1,0 +1,17 @@
+.ShoppingCart {
+    color: white;
+    padding: 100px;
+}
+
+.ShoppingCart ul {
+    list-style-type: none;
+}
+
+.ShoppingCart li {
+    margin-left: 10px;
+}
+
+.ShoppingCart p {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}

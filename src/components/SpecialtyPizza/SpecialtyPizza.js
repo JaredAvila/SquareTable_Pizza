@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as styles from "./SpecialtyPizza.module.css";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/";
+import { withRouter } from "react-router-dom";
 
 import Pizza from "../Pizza/Pizza";
 import Button from "../UI/Button/Button";
@@ -20,6 +21,16 @@ class SpecialtyPizza extends Component {
   };
 
   purchaseContinueHandler = () => {
+    const pizza = {
+      price: this.props.price,
+      size: "large",
+      toppings: [this.props.name]
+    };
+    this.props.onAddToCart(pizza);
+    this.props.history.push("/cart");
+  };
+
+  purchaseAddToCartHandler = () => {
     this.setState({ purchasing: false });
     const pizza = {
       price: this.props.price,
@@ -43,6 +54,7 @@ class SpecialtyPizza extends Component {
         key={this.props.name}
         purchaseCancelled={this.purchaseCancelHandler}
         purchaseContinued={this.purchaseContinueHandler}
+        purchaseAddToCart={this.purchaseAddToCartHandler}
       />
     );
     if (this.props.loading) {
@@ -81,4 +93,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   null,
   mapDispatchToProps
-)(SpecialtyPizza);
+)(withRouter(SpecialtyPizza));

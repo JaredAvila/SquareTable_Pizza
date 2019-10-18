@@ -67,12 +67,7 @@ class PizzaBuilder extends Component {
   };
 
   purchaseHandler = () => {
-    if (this.props.isAuthenticated) {
-      this.setState({ purchasing: true });
-    } else {
-      this.props.onSetAuthRedirectPath("/cart");
-      this.props.history.push("/auth");
-    }
+    this.setState({ purchasing: true });
   };
 
   purchaseCancelHandler = () => {
@@ -80,6 +75,17 @@ class PizzaBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
+    const filteredObj = filterObject(this.props.ings);
+    const toppings = Object.keys(filteredObj).map(topping => topping);
+    const newPizza = {
+      price: this.props.totalPrice,
+      size: this.props.size,
+      toppings
+    };
+    this.props.onAddToCart(newPizza);
+    this.props.history.push("/cart");
+  };
+  purchaseAddToCartHandler = () => {
     const filteredObj = filterObject(this.props.ings);
     const toppings = Object.keys(filteredObj).map(topping => topping);
     const newPizza = {
@@ -124,6 +130,7 @@ class PizzaBuilder extends Component {
           size={this.props.size}
           purchaseCancelled={this.purchaseCancelHandler}
           purchaseContinued={this.purchaseContinueHandler}
+          purchaseAddToCart={this.purchaseAddToCartHandler}
         />
       );
     }
@@ -151,8 +158,7 @@ const mapStateToProps = state => {
     prices: state.pizzaBuilder.prices,
     size: state.pizzaBuilder.currentSize,
     totalPrice: state.pizzaBuilder.totalPrice,
-    error: state.pizzaBuilder.error,
-    isAuthenticated: state.auth.token !== null
+    error: state.pizzaBuilder.error
   };
 };
 
@@ -164,7 +170,6 @@ const mapDispatchToProps = dispatch => {
     onInitIngredients: () => dispatch(actions.initIngredients()),
     onInitPrices: () => dispatch(actions.initPrices()),
     onResetPriceAndSize: () => dispatch(actions.resetPrice()),
-    onSetAuthRedirectPath: path => dispatch(actions.setAuthRedirectPath(path)),
     onAddToCart: pizza => dispatch(actions.addToCart(pizza))
   };
 };

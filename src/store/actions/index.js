@@ -14,5 +14,11 @@ export {
   addToCart,
   getCart
 } from "./order";
-export { auth, logout, setAuthRedirectPath, authCheckState } from "./auth";
+export {
+  auth,
+  logout,
+  setAuthRedirectPath,
+  authCheckState,
+  clearCart
+} from "./auth";
 export { fetchSpecialtyPizzas, updateSpecialtyPrice } from "./specialtyMenu";

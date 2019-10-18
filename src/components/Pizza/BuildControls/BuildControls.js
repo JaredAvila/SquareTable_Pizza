@@ -59,7 +59,7 @@ const BuildControls = props => {
         ))}
       </div>
       <Button buttonType="Yellow" clicked={props.purchase}>
-        {props.isAuth ? "ADD TO CART" : "LOGIN TO ORDER"}
+        "ADD TO CART"
       </Button>
     </div>
   );

@@ -1,18 +1,18 @@
-.OrderSummary {
+.OrderSummaryTitle {
     font-size: 1.8rem;
     border-bottom: 4px double rgb(37, 37, 37);
     margin-bottom: 10px;
 }
 
-.List {
+.OrderSummary ul {
     list-style-type: none;
 }
 
-.Item {
+.OrderSummary li {
     margin-left: 10px;
 }
 
-.Type {
+.OrderSummary p {
     font-size: 1.6rem;
     margin-bottom: 10px;
 }
