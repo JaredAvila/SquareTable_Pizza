@@ -10,6 +10,12 @@ export const addToCart = pizzaData => {
   };
 };
 
+export const getCart = () => {
+  return dispatch => {
+    return JSON.parse(localStorage.getItem("pizzas"));
+  };
+};
+
 export const purchasedPizzaSuccess = (id, orderData) => {
   return {
     type: actionTypes.PURCHASE_PIZZA_SUCCESS,

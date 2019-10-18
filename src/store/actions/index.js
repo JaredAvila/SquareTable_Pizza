@@ -11,7 +11,8 @@ export {
   purchaseInit,
   fetchOrders,
   clearOrders,
-  addToCart
+  addToCart,
+  getCart
 } from "./order";
 export { auth, logout, setAuthRedirectPath, authCheckState } from "./auth";
 export { fetchSpecialtyPizzas, updateSpecialtyPrice } from "./specialtyMenu";

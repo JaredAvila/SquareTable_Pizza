@@ -11,12 +11,17 @@ class Orders extends Component {
   componentDidMount() {
     this.props.onFetchOrders(this.props.token, this.props.userId);
   }
+
+  getCartHandler = () => {
+    const cart = this.props.onGetCart();
+    console.log(cart);
+  };
   render() {
     let orders = <Spinner />;
     if (!this.props.loading) {
       orders = (
-        <div>
-          {this.props.orders.map(order => {
+        <div style={{ padding: "100px" }}>
+          {/* {this.props.orders.map(order => {
             return (
               <Order
                 key={order.id}
@@ -24,7 +29,8 @@ class Orders extends Component {
                 customer={order.customerData}
               />
             );
-          })}
+          })} */}
+          <button onClick={this.getCartHandler}>Get Cart</button>
         </div>
       );
     }
@@ -44,7 +50,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onFetchOrders: (token, userId) =>
-      dispatch(actions.fetchOrders(token, userId))
+      dispatch(actions.fetchOrders(token, userId)),
+    onGetCart: () => dispatch(actions.getCart())
   };
 };
 
