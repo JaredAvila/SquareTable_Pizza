@@ -1,11 +1,11 @@
 .Modal {
     position: fixed;
     z-index: 500;
-    background-color: white;
+    background: linear-gradient(20deg, rgb(34, 34, 34), rgb(59, 59, 59));
     width: 70%;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(56, 56, 56);
     box-shadow: 1px 1px 1px black;
-    padding: 16px;
+    padding: 30px 16px;
     left: 15%;
     top: 30%;
     box-sizing: border-box;

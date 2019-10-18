@@ -1,15 +1,22 @@
+.OrderSummary {
+    color: rgb(247, 247, 247);
+}
+
 .OrderSummaryTitle {
     font-size: 1.8rem;
-    border-bottom: 4px double rgb(37, 37, 37);
+    border-bottom: 4px double rgb(247, 247, 247);
     margin-bottom: 10px;
 }
 
 .OrderSummary ul {
     list-style-type: none;
+    margin-bottom: 10px;
 }
 
 .OrderSummary li {
     margin-left: 10px;
+    color: rgb(245, 135, 135);
+    padding-bottom: 5px;
 }
 
 .OrderSummary p {
@@ -20,4 +27,5 @@
 .OrderSummary span {
     margin-top: 10px;
     font-size: 1.4rem;
+    color: rgb(102, 206, 102);
 }

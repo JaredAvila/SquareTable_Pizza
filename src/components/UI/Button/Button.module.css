@@ -32,6 +32,7 @@
     background-color: #5C9210;
     color: rgb(223, 223, 223);
     border: 2px solid rgb(223, 223, 223);
+    box-shadow: 0 0 10px #5C9210;
 }
 
 .Primary {
@@ -47,6 +48,7 @@
     background-color: rgb(16, 72, 146);
     color: rgb(207, 207, 207);
     border: 2px solid rgb(207, 207, 207);
+    box-shadow: 0 0 10px rgb(16, 72, 146);
 }
 
 .Danger {
@@ -62,6 +64,7 @@
     background-color: #944317;
     color: rgb(207, 207, 207);
     border: 2px solid rgb(207, 207, 207);
+    box-shadow: 0 0 10px #944317;
 }
 
 .Button:disabled {
