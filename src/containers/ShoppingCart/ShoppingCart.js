@@ -2,19 +2,97 @@ import React, { Component } from "react";
 import * as actions from "../../store/actions/";
 import * as styles from "./ShoppingCart.module.css";
 import { displayOrder } from "../../helper/displayOrder";
+import checkValidity from "../../helper/checkValidity";
 
 import { connect } from "react-redux";
 
 import Button from "../../components/UI/Button/Button";
 import Modal from "../../components/UI/Modal/Modal";
 import Aux from "../../hoc/AuxComponent/AuxComponent";
+import Input from "../../components/UI/Input/Input";
 
 class ShoppingCart extends Component {
   state = {
     pizzas: null,
     ordering: false,
     completed: false,
-    login: false
+    guest: false,
+    controls: {
+      name: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Full Name",
+          name: "name",
+          autoComplete: "username"
+        },
+        value: "",
+        validation: {
+          required: true
+        },
+        valid: false,
+        touched: false
+      },
+      street: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Street Address",
+          name: "street"
+        },
+        value: "",
+        validation: {
+          required: true
+        },
+        valid: false,
+        touched: false
+      },
+      city: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "City",
+          name: "city"
+        },
+        value: "",
+        validation: {
+          required: true
+        },
+        valid: false,
+        touched: false
+      },
+      state: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "State",
+          name: "state",
+          maxLength: 2
+        },
+        value: "",
+        validation: {
+          required: true
+        },
+        valid: false,
+        touched: false
+      },
+      zipcode: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Zipcode",
+          name: "zipcode",
+          maxLength: 6
+        },
+        value: "",
+        validation: {
+          required: true,
+          minLength: 6
+        },
+        valid: false,
+        touched: false
+      }
+    }
   };
 
   componentDidMount() {
@@ -23,12 +101,33 @@ class ShoppingCart extends Component {
     this.setState({ pizzas: cartPizzas });
   }
 
+  inputChangedHandler = (event, controlName) => {
+    const updatedControls = {
+      ...this.state.controls,
+      [controlName]: {
+        ...this.state.controls[controlName],
+        value: event.target.value,
+        valid: checkValidity(
+          event.target.value,
+          this.state.controls[controlName].validation
+        ),
+        touched: true
+      }
+    };
+    this.setState({ controls: updatedControls });
+  };
+
   checkoutContinuedHandler = () => {
     this.setState({ ordering: true });
   };
 
   checkoutCancelledHandler = () => {
-    this.setState({ ordering: false, completed: false, login: false });
+    this.setState({
+      ordering: false,
+      completed: false,
+      login: false,
+      guest: false
+    });
   };
 
   clearCartHandler = () => {
@@ -66,6 +165,10 @@ class ShoppingCart extends Component {
     this.props.history.push("/auth", { building: true });
   };
 
+  guestCheckoutHandler = () => {
+    this.setState({ guest: true, ordering: false });
+  };
+
   render() {
     let markup = null;
     let totalPrice = 0;
@@ -82,7 +185,7 @@ class ShoppingCart extends Component {
         <Button clicked={this.loginHandler} buttonType="Primary">
           LOGIN
         </Button>
-        <Button clicked={this.checkoutCancelledHandler} buttonType="Success">
+        <Button clicked={this.guestCheckoutHandler} buttonType="Success">
           CONTINUE AS GUEST
         </Button>
       </div>
@@ -100,9 +203,35 @@ class ShoppingCart extends Component {
         </div>
       );
     }
+    const formElementsArray = [];
+    for (let key in this.state.controls) {
+      formElementsArray.push({
+        id: key,
+        config: this.state.controls[key]
+      });
+    }
+    let form = formElementsArray.map(el => {
+      return (
+        <Input
+          key={el.id}
+          elementType={el.config.elementType}
+          elementConfig={el.config.elementConfig}
+          value={el.config.value}
+          changed={e => this.inputChangedHandler(e, el.id)}
+          invalid={!el.config.valid}
+          touched={el.config.touched}
+        />
+      );
+    });
 
     return (
       <Aux>
+        <Modal
+          show={this.state.guest}
+          modalClosed={this.checkoutCancelledHandler}
+        >
+          <form>{form}</form>
+        </Modal>
         <Modal
           show={this.state.ordering}
           modalClosed={this.checkoutCancelledHandler}
