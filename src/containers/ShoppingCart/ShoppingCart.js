@@ -159,18 +159,21 @@ class ShoppingCart extends Component {
   };
 
   placeOrderHandler = () => {
-    let order = null;
+    let order = {
+      pizzas: this.state.pizzas,
+      deliveryInfo: {
+        name: this.state.controls["name"].value,
+        stree: this.state.controls["street"].value,
+        city: this.state.controls["city"].value,
+        state: this.state.controls["state"].value,
+        zipcode: this.state.controls["zipcode"].value
+      }
+    };
     if (this.formValidityHandler()) {
       if (this.props.isAuthenticated) {
-        order = {
-          pizzas: this.state.pizzas,
-          userId: localStorage.getItem("userId")
-        };
+        order["userId"] = localStorage.getItem("userId");
       } else {
-        order = {
-          pizzas: this.state.pizzas,
-          userId: "Guest"
-        };
+        order["userId"] = "Guest";
       }
       this.props.onPurchase(order);
       this.setState({ ordering: false, completed: true, checkout: false });
@@ -178,9 +181,6 @@ class ShoppingCart extends Component {
     } else {
       this.setState({ error: true });
     }
-
-    this.setState({ ordering: false, completed: true });
-    this.clearCartHandler();
   };
 
   orderFinishedHandler = () => {
