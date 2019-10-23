@@ -17,6 +17,8 @@ class ShoppingCart extends Component {
     ordering: false,
     completed: false,
     guest: false,
+    formIsValid: false,
+    error: false,
     controls: {
       name: {
         elementType: "input",
@@ -82,12 +84,12 @@ class ShoppingCart extends Component {
           type: "text",
           placeholder: "Zipcode",
           name: "zipcode",
-          maxLength: 6
+          maxLength: 5
         },
         value: "",
         validation: {
           required: true,
-          minLength: 6
+          minLength: 5
         },
         valid: false,
         touched: false
@@ -114,7 +116,11 @@ class ShoppingCart extends Component {
         touched: true
       }
     };
-    this.setState({ controls: updatedControls });
+    let formIsValid = true;
+    for (let inputID in updatedControls) {
+      formIsValid = updatedControls[inputID].valid && formIsValid;
+    }
+    this.setState({ controls: updatedControls, formIsValid });
   };
 
   checkoutContinuedHandler = () => {
@@ -148,15 +154,30 @@ class ShoppingCart extends Component {
   };
 
   placeOrderHandler = () => {
-    const order = {
+    let order = {
       pizzas: this.state.pizzas,
       userId: localStorage.getItem("userId")
     };
     this.props.onPurchase(order);
     this.setState({ ordering: false, completed: true });
-  };
-  orderFinishedHandler = () => {
     this.clearCartHandler();
+  };
+
+  placeGuestOrderHandler = () => {
+    if (this.formValidityHandler()) {
+      let order = {
+        pizzas: this.state.pizzas,
+        userId: "Guest"
+      };
+      this.props.onPurchase(order);
+      this.setState({ ordering: false, completed: true, guest: false });
+      this.clearCartHandler();
+    } else {
+      this.setState({ error: true });
+    }
+  };
+
+  orderFinishedHandler = () => {
     this.props.history.push("/");
   };
 
@@ -167,6 +188,27 @@ class ShoppingCart extends Component {
 
   guestCheckoutHandler = () => {
     this.setState({ guest: true, ordering: false });
+  };
+
+  formValidityHandler = () => {
+    const formElementsArray = [];
+    for (let key in this.state.controls) {
+      formElementsArray.push({
+        id: key,
+        config: this.state.controls[key]
+      });
+    }
+    let flag = true;
+    for (let i = 0; i < formElementsArray.length; i++) {
+      if (
+        !formElementsArray[i].config.valid ||
+        !formElementsArray[i].config.touched
+      ) {
+        flag = false;
+      }
+    }
+    this.setState({ error: false });
+    return flag;
   };
 
   render() {
@@ -230,7 +272,18 @@ class ShoppingCart extends Component {
           show={this.state.guest}
           modalClosed={this.checkoutCancelledHandler}
         >
+          <h3 className={styles.GuestCheckout}>Enter delivery information</h3>
           <form>{form}</form>
+          <Button
+            buttonType="Primary"
+            disabled={!this.state.formIsValid}
+            clicked={this.placeGuestOrderHandler}
+          >
+            PLACE ORDER
+          </Button>
+          <p className={styles.Error}>
+            {this.state.error ? "Must fill out all fields" : null}
+          </p>
         </Modal>
         <Modal
           show={this.state.ordering}

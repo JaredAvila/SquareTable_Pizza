@@ -67,3 +67,12 @@
     padding: 5px 0;
     margin-bottom: 10px;
 }
+
+.GuestCheckout {
+    color: white;
+    letter-spacing: .3rem;
+}
+
+.Error {
+    color: red;
+}
