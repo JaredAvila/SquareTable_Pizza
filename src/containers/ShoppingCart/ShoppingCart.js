@@ -16,7 +16,7 @@ class ShoppingCart extends Component {
     pizzas: null,
     ordering: false,
     completed: false,
-    guest: false,
+    checkout: false,
     formIsValid: false,
     error: false,
     controls: {
@@ -73,7 +73,8 @@ class ShoppingCart extends Component {
         },
         value: "",
         validation: {
-          required: true
+          required: true,
+          minLength: 2
         },
         valid: false,
         touched: false
@@ -124,7 +125,11 @@ class ShoppingCart extends Component {
   };
 
   checkoutContinuedHandler = () => {
-    this.setState({ ordering: true });
+    if (this.props.isAuthenticated) {
+      this.setState({ checkout: true });
+    } else {
+      this.setState({ ordering: true });
+    }
   };
 
   checkoutCancelledHandler = () => {
@@ -132,7 +137,7 @@ class ShoppingCart extends Component {
       ordering: false,
       completed: false,
       login: false,
-      guest: false
+      checkout: false
     });
   };
 
@@ -154,27 +159,28 @@ class ShoppingCart extends Component {
   };
 
   placeOrderHandler = () => {
-    let order = {
-      pizzas: this.state.pizzas,
-      userId: localStorage.getItem("userId")
-    };
-    this.props.onPurchase(order);
-    this.setState({ ordering: false, completed: true });
-    this.clearCartHandler();
-  };
-
-  placeGuestOrderHandler = () => {
+    let order = null;
     if (this.formValidityHandler()) {
-      let order = {
-        pizzas: this.state.pizzas,
-        userId: "Guest"
-      };
+      if (this.props.isAuthenticated) {
+        order = {
+          pizzas: this.state.pizzas,
+          userId: localStorage.getItem("userId")
+        };
+      } else {
+        order = {
+          pizzas: this.state.pizzas,
+          userId: "Guest"
+        };
+      }
       this.props.onPurchase(order);
-      this.setState({ ordering: false, completed: true, guest: false });
+      this.setState({ ordering: false, completed: true, checkout: false });
       this.clearCartHandler();
     } else {
       this.setState({ error: true });
     }
+
+    this.setState({ ordering: false, completed: true });
+    this.clearCartHandler();
   };
 
   orderFinishedHandler = () => {
@@ -187,7 +193,7 @@ class ShoppingCart extends Component {
   };
 
   guestCheckoutHandler = () => {
-    this.setState({ guest: true, ordering: false });
+    this.setState({ checkout: true, ordering: false });
   };
 
   formValidityHandler = () => {
@@ -236,7 +242,7 @@ class ShoppingCart extends Component {
       orderCheckout = (
         <div>
           <p className={styles.FinalTotal}>Your total is: ${totalPrice}</p>
-          <Button clicked={this.placeOrderHandler} buttonType="Primary">
+          <Button clicked={this.guestCheckoutHandler} buttonType="Primary">
             PLACE ORDER
           </Button>
           <Button clicked={this.checkoutCancelledHandler} buttonType="Danger">
@@ -269,7 +275,7 @@ class ShoppingCart extends Component {
     return (
       <Aux>
         <Modal
-          show={this.state.guest}
+          show={this.state.checkout}
           modalClosed={this.checkoutCancelledHandler}
         >
           <h3 className={styles.GuestCheckout}>Enter delivery information</h3>
@@ -277,7 +283,7 @@ class ShoppingCart extends Component {
           <Button
             buttonType="Primary"
             disabled={!this.state.formIsValid}
-            clicked={this.placeGuestOrderHandler}
+            clicked={this.placeOrderHandler}
           >
             PLACE ORDER
           </Button>
