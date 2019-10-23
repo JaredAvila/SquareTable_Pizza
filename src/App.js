@@ -8,6 +8,7 @@ import * as actions from "./store/actions/";
 import Layout from "./hoc/Layout/Layout";
 import Logout from "./containers/Auth/Logout/Logout";
 import Landing from "./containers/Landing/Landing";
+import Orders from "./containers/Orders/Orders";
 
 const asyncShoppingCart = asyncComponent(() => {
   return import("./containers/ShoppingCart/ShoppingCart");
@@ -48,6 +49,7 @@ class App extends Component {
           <Route path="/cart" component={asyncShoppingCart} />
           <Route path="/builder" component={asyncBuilder} />
           <Route path="/specialty" component={asyncSpecialty} />
+          <Route path="/orders" component={Orders} />
           <Route path="/logout" component={Logout} />
           <Route path="/" component={Landing} />
         </Switch>

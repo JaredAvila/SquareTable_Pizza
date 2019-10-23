@@ -2,6 +2,7 @@ import React from "react";
 
 import * as styles from "./NavigationItems.module.css";
 import NavigationItem from "./NavigationItem/NavigationItem";
+import Aux from "../../../hoc/AuxComponent/AuxComponent";
 
 const NavigationItems = props => {
   return (
@@ -18,7 +19,10 @@ const NavigationItems = props => {
       {!props.isAuth ? (
         <NavigationItem link="/auth">Login</NavigationItem>
       ) : (
-        <NavigationItem link="/logout">Logout</NavigationItem>
+        <Aux>
+          <NavigationItem link="/orders">Past Orders</NavigationItem>
+          <NavigationItem link="/logout">Logout</NavigationItem>
+        </Aux>
       )}
     </ul>
   );

@@ -1,48 +1,57 @@
 import React from "react";
 
-import Pizza from "../Pizza/Pizza";
 import filterObject from "../../helper/filterObject";
 
 import * as styles from "./Order.module.css";
+import Aux from "../../hoc/AuxComponent/AuxComponent";
 
-const Order = props => {
-  let ingArr = [];
-  let pizzaIngs;
-  if (props.pizza.ingredients) {
-    pizzaIngs = props.pizza.ingredients;
-    pizzaIngs = filterObject(pizzaIngs);
-    ingArr = Object.keys(pizzaIngs);
-    if (ingArr.length === 1) {
-      ingArr = ingArr.join(" ");
-    } else if (ingArr.length === 2) {
-      ingArr = ingArr.join(" and ");
+const pizzaToppings = pizza => {
+  if (pizza.toppings) {
+    if (
+      pizza.toppings[0] === "allmeat" ||
+      pizza.toppings[0] === "combo" ||
+      pizza.toppings[0] === "veggie" ||
+      pizza.toppings[0] === "bbqchicken" ||
+      pizza.toppings[0] === "hawaiian"
+    ) {
+      return pizza.toppings[0];
     } else {
-      let temp = ingArr.pop();
-      ingArr.push(" and");
-      ingArr = ingArr.join(", ");
-      ingArr = ingArr + " " + temp;
+      let pizzaIngs = filterObject(pizza.toppings);
+      let ingArr = Object.values(pizzaIngs);
+      if (ingArr.length === 1) {
+        return ingArr.join(" ");
+      } else if (ingArr.length === 2) {
+        return ingArr.join(" and ");
+      } else {
+        let temp = ingArr.pop();
+        ingArr.push(" and");
+        ingArr = ingArr.join(", ");
+        return ingArr + " " + temp;
+      }
     }
   } else {
-    ingArr = "cheese";
-    pizzaIngs = { pepperoni: false };
+    return "cheese";
   }
+};
+
+const Order = props => {
   return (
-    <div className={styles.Order}>
-      <div>
-        <p>
-          <span style={{ textTransform: "capitalize" }}>
-            {props.pizza.size}
-          </span>{" "}
-          {ingArr} pizza
-        </p>
-        <p>
-          Price: <strong>${props.pizza.price}</strong>
-        </p>
-      </div>
-      <div className={styles.Pizzcontainer}>
-        <Pizza ingredients={pizzaIngs} />
-      </div>
-    </div>
+    <Aux>
+      {props.pizzas.map(pizza => {
+        return (
+          <div key={Math.random() * (3000 - 1) + 1} className={styles.Order}>
+            <div>
+              <p style={{ textTransform: "capitalize" }}>
+                {pizza.size} {pizzaToppings(pizza)} pizza
+              </p>
+              <p>
+                Price: <strong>${pizza.price}</strong>
+              </p>
+            </div>
+          </div>
+        );
+      })}
+    </Aux>
   );
 };
 

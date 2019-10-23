@@ -59,7 +59,6 @@ class Auth extends Component {
         this.props.onSetAuthRedirectPath();
       }
     }
-    console.log(this.props);
   }
 
   inputChangedHandler = (event, controlName) => {
@@ -93,6 +92,25 @@ class Auth extends Component {
     });
   };
 
+  passwordErrorHandler = error => {
+    switch (error) {
+      case "INVALID_EMAIL":
+        return "Email Incorrect";
+      case "INVALID_PASSWORD":
+        return "Password Incorrect";
+      case "MISSING_PASSWORD":
+        return "Password Missing";
+      case "WEAK_PASSWORD : Password should be at least 6 characters":
+        return "Password should be at least 6 characters";
+      case "EMAIL_EXISTS":
+        return "Already an account with that email";
+      case "TOO_MANY_ATTEMPTS_TRY_LATER : Too many unsuccessful login attempts.  Please include reCaptcha verification or try again later":
+        return "Too many unsuccessful login attempts. Please try again later or contact administrator";
+      default:
+        return "";
+    }
+  };
+
   render() {
     const formElementsArray = [];
     for (let key in this.state.controls) {
@@ -122,7 +140,8 @@ class Auth extends Component {
     let errorMessage = null;
 
     if (this.props.error) {
-      errorMessage = <p>{this.props.error.message}</p>;
+      const errorMsg = this.passwordErrorHandler(this.props.error.message);
+      errorMessage = <p className={styles.Error}>{errorMsg}</p>;
     }
 
     let authRedirect = null;

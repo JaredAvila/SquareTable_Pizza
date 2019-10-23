@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "../../axios-orders";
 import { connect } from "react-redux";
 
+import * as styles from "./Orders.module.css";
 import * as actions from "../../store/actions/";
 import Order from "../../components/Order/Order";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHanlder";
@@ -12,22 +13,16 @@ class Orders extends Component {
     this.props.onFetchOrders(this.props.token, this.props.userId);
   }
 
-  getCartHandler = () => {
-    const cart = this.props.onGetCart();
-    console.log(cart);
-  };
   render() {
     let orders = <Spinner />;
     if (!this.props.loading) {
       orders = (
-        <div style={{ padding: "100px" }}>
+        <div className={styles.Orders} style={{ padding: "100px" }}>
           {this.props.orders.map(order => {
             return (
-              <Order
-                key={order.id}
-                pizza={order.orderData}
-                customer={order.customerData}
-              />
+              <div key={order.id} className={styles.Order}>
+                <Order key={order.id} pizzas={order.pizzas} />
+              </div>
             );
           })}
         </div>
