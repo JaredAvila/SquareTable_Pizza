@@ -1,22 +1,19 @@
 # SquareTable Pizza
 
-- A web application for creating and ordering pizza
+### A web application for creating and ordering pizza
 
-## Available Scripts
+- Built on React with Redux for state management
+- Utilizes Firebase for authentication and database
+- Local Storage API to store token and user information to keep them logged in
+- Uses Axios for HTTP request/response handling
+- Modular CSS and Lax.js used for responsive UI/UX
 
-In the project directory, you can run:
+[Click here for demo](https://admiring-mcnulty-ad57be.netlify.com/)
 
-### `npm start`
+> View menus and add pizza to your cart
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![alt text](https://media.giphy.com/media/SY2ybLGEL62mccRfBv/giphy.gif "cityline pizza")
 
-### `npm run build`
+> Create your own pizza!
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![alt text](https://media.giphy.com/media/iI4UgZ2t7rCYN9n4U9/giphy.gif "cityline pizza")

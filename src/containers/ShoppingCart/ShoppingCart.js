@@ -163,11 +163,12 @@ class ShoppingCart extends Component {
       pizzas: this.state.pizzas,
       deliveryInfo: {
         name: this.state.controls["name"].value,
-        stree: this.state.controls["street"].value,
+        street: this.state.controls["street"].value,
         city: this.state.controls["city"].value,
         state: this.state.controls["state"].value,
         zipcode: this.state.controls["zipcode"].value
-      }
+      },
+      orderDate: new Date()
     };
     if (this.formValidityHandler()) {
       if (this.props.isAuthenticated) {

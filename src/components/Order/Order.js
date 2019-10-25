@@ -3,7 +3,6 @@ import React from "react";
 import filterObject from "../../helper/filterObject";
 
 import * as styles from "./Order.module.css";
-import Aux from "../../hoc/AuxComponent/AuxComponent";
 
 const pizzaToppings = pizza => {
   if (pizza.toppings) {
@@ -35,11 +34,19 @@ const pizzaToppings = pizza => {
 };
 
 const Order = props => {
+  console.log(props);
   return (
-    <Aux>
-      {props.pizzas.map(pizza => {
+    <div className={styles.Order}>
+      <p>Ordered by: {props.delivery.name}</p>
+      <p>Delivered to:</p>
+      <p>{props.delivery.street}</p>
+      <p>
+        {props.delivery.city}, {props.delivery.state}
+      </p>
+      <p>{props.delivery.zipcode}</p>
+      {props.pizzas.map((pizza, i) => {
         return (
-          <div key={Math.random() * (3000 - 1) + 1} className={styles.Order}>
+          <div key={i} className={styles.Pizzas}>
             <div>
               <p style={{ textTransform: "capitalize" }}>
                 {pizza.size} {pizzaToppings(pizza)} pizza
@@ -51,7 +58,7 @@ const Order = props => {
           </div>
         );
       })}
-    </Aux>
+    </div>
   );
 };
 

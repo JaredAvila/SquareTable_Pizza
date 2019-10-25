@@ -1,5 +1,9 @@
 .Order {
-    border: 1px solid blue;
-    margin: 5px;
-    background-color: rgb(65, 65, 65);
+  border: 1px solid blue;
+  margin: 5px;
+  background-color: rgb(65, 65, 65);
+}
+
+.Orders h1 {
+  color: white;
 }

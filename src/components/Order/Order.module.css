@@ -1,4 +1,8 @@
 .Order {
+  padding: 40px;
+}
+
+.Pizzas {
   width: 100%;
   border: 1px solid #eee;
   box-shadow: 0 2px 3px #ccc;
@@ -17,7 +21,7 @@
 }
 
 @media (min-width: 600px) {
-  .Order {
+  .Pizzas {
     width: 500px;
     margin: 10px;
   }
