@@ -17,3 +17,7 @@
 > Create your own pizza!
 
 ![alt text](https://media.giphy.com/media/iI4UgZ2t7rCYN9n4U9/giphy.gif "cityline pizza")
+
+> Add to your cart and continue to checkout as a guest or login
+
+![alt text](https://media.giphy.com/media/gk9zzNbW8x5NVQa1LX/giphy.gif "cityline pizza")
